@@ -1,0 +1,220 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canal Cultural Córdoba</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./Assets/styles.css" />
+    <link rel="stylesheet" href="./Assets/mediaqueries.css" />
+    <link rel="stylesheet" href="./Assets/animaciones.css" />
+        
+    <!-- Fontawesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" 
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" 
+        crossorigin="anonymous" 
+        referrerpolicy="no-referrer" 
+    />
+</head>
+<body>
+    <header class="header">
+        <img src="./Assets/Images/Logo.png" alt="Logo de Conexión Cultural Córdoba" class="logo"/>
+
+        <nav class="nav-bar">
+             <div class="menu-label">
+                <i class="fa-solid fa-bars menu-icon"></i>
+            </div>
+
+            <!-- Navegación -->
+            <ul class="nav-bar_list" >
+                <li><a class="nav-bar_link" href="#">Opción 1 </a></li>
+                <li><a class="nav-bar_link" href="#">Opción 2 </a></li>
+                <li><a class="nav-bar_link" href="#">Opción 3 </a></li>
+            </ul>
+
+            <div class="favorites-label">
+                <i class="fa-solid fa-star favorite-icon__nav-bar"></i>
+            </div>
+            
+            <!-- Menu favoritos -->
+            <div class="favorites-menu">
+                <div class="favorites-menu__titleBox">
+                    <h2 class="favorites-title">Tus noticias favoritas</h2>  
+                    <i class="fa-solid fa-star favorite-icon__favorites-menu"></i>            
+                </div>
+
+                <div class="favorites-container">
+                    <div class="favorite-art">
+                        <div class="favorite-art__img" 
+                             style="background-image:url(./Assets/Images/escenario\ ejemplo.jpg)">                            
+                        </div>                        
+
+                        <div class="favorite-art__info">
+                            <h3 class="favorite-art__title">Título de la noticia</h3>
+                            <p class="favorite-art__date">5 de noviembre 2022</p>
+                        </div>
+
+                        <button class="removeBtn">
+                            <i class="fas fa-trash trash-icon"></i>
+                        </button>                      
+                    </div>
+                </div>
+
+                <button class="cleanFavorites-btn">Borrar todos</button>
+            </div>
+
+            <div class="overlay hidden"></div>
+        </nav>          
+    </header>
+
+    <main class="main">
+        <!-- Hero -->
+        <div class="hero">
+            <div class="hero-info">
+                <h1 class="hero-title">Canal Cultural Cordoba</h1>
+                <h2 class="hero-slogan">Las últimas noticias del teatro, la música, el cine y las artes visuales. Información, fotos y videos sobre los últimos estrenos, conciertos, muestras y tus artistas favoritos.</h2>
+            </div>
+
+            <div class="hero-register">
+                <div class="register-info">
+                    <h2 class="register-title">Ingresá como usuario</h2>
+                    <p class="register-slogan">Iniciá sesión para enterarte primero de todas las noticias y aprovechar nuestros beneficios. </br>Si aún no lo hiciste registrate, es completamente gratis!</p>
+                </div>
+
+                <div class="register-btnsBox">
+                    <button class="login-btn btn"><a href="#">Ingresá</a></button>
+                    <button class="singup-btn btn"><a href="#">Registrate</a></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Beneficios -->
+        <div class="benefit">
+            <h2 class="benefit-title">¡No te pierdas nuestros beneficios!</h2>
+
+            <div class="benefit-box">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="Fas fa-regular fa-ticket"></i>
+                    </div>
+                    <div class="benefit-card-info">
+                        <h3 class="benefit-card-title">Tikets</h3>
+                        <p class="benefit-card-text">Entradas y descuentos para tus eventos</p>
+                    </div> 
+                </div>
+    
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="Fas fa-solid fa-newspaper"></i>
+                    </div>
+                    <div class="benefit-card-info">
+                        <h3 class="benefit-card-title">News</h3>
+                        <p class="benefit-card-text">Enterate primero de todas las noticias</p> 
+                    </div> 
+                </div>
+    
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fa-solid fa-video"></i>
+                    </div>
+                    <div class="benefit-card-info">
+                        <h3 class="benefit-card-title">Premiers</h3>
+                        <p class="benefit-card-text">Acceso esclusivo a estrenos en el cine</p>
+                    </div> 
+                </div>
+            </div>
+
+
+        </div>
+
+        <!-- Noticias -->
+        <div class="news">
+            <h2 class="news-title">Noticias</h2>
+
+            <div class="categories-box">
+                <button class="categories-btn" data-category="">Todas</button>
+
+                <button class="categories-btn" data-category="">Música</button>
+
+                <button class="categories-btn" data-category="">Teatro</button>
+
+                <button class="categories-btn category-active" data-category="">Cine</button>
+
+                <button class="categories-btn" data-category="">Visuales</button>
+
+                <button class="categories-btn" data-category="">Danza</button>
+            </div>
+            
+            <div class="news-section">
+                <div class="art-box">
+                    <div class="art-info">
+                        <h3 class="art-category">Teatro</h3>
+                        <h3 class="art-date">5 de noviembre 2022</h3>
+                    </div>
+
+                    <div class="art-content">
+                        <img class="art-img" src="./Assets/Images/escenario ejemplo.jpg" alt="">
+                        <h2 class="art-title">Este es el título de la noticia</h2>
+                    </div>
+                </div>
+
+                <div class="art-box">
+                    <div class="art-info">
+                        <h3 class="art-category">Teatro</h3>
+                        <h3 class="art-date">5 de noviembre 2022</h3>
+                    </div>
+
+                    <div class="art-content">
+                        <img class="art-img" src="./Assets/Images/Quality1.jpg" alt="">
+                        <h2 class="art-title">Este es el título de la noticia</h2>
+                    </div>
+                </div>
+
+                <div class="art-box">
+                    <div class="art-info">
+                        <h3 class="art-category">Teatro</h3>
+                        <h3 class="art-date">5 de noviembre 2022</h3>
+                    </div>
+
+                    <div class="art-content">
+                        <img class="art-img" src="./Assets/Images/museo evita 2.jpg" alt="">
+                        <h2 class="art-title">Este es el título de la noticia</h2>
+                    </div>
+                </div>
+
+                <div class="art-box">
+                    <div class="art-info">
+                        <h3 class="art-category">Teatro</h3>
+                        <h3 class="art-date">5 de noviembre 2022</h3>
+                    </div>
+
+                    <div class="art-content">
+                        <img class="art-img" src="./Assets/Images/piojera 1.jpg" alt="">
+                        <h2 class="art-title">Este es el título de la noticia</h2>
+                    </div>
+                </div>
+
+                <div class="art-box">
+                    <div class="art-info">
+                        <h3 class="art-category">Teatro</h3>
+                        <h3 class="art-date">5 de noviembre 2022</h3>
+                    </div>
+
+                    <div class="art-content">
+                        <img class="art-img" src="./Assets/Images/escenario ejemplo.jpg" alt="">
+                        <h2 class="art-title">Este es el título de la noticia</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </main>
+
+    <footer>
+
+    </footer>
+    <script src="./Assets/data.js"></script>
+    <script src="./Assets/index.js"></script    
+</body>
+</html>

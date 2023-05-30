@@ -1,0 +1,16 @@
+- https://cultura.laplata.gob.ar/
+- https://portaldenoticias.com.ar/category/zona-cultural/
+-https://www.eldiario.com.ar/category/cultura/
+-https://garajedelrock.com/category/noticias/
+
+
+
+logo: gris del fondo: #404040
+	letras: #4DA4E0 font family blanka
+
+Combinación 5 de la pag coolors
+
+Font combination: prompt, rambla y unna
+-
+
+  
