@@ -17,6 +17,7 @@
         referrerpolicy="no-referrer" 
     />
 </head>
+
 <body>
     <header class="header">
         <img src="./Assets/Images/Logo.png" alt="Logo de Conexión Cultural Córdoba" class="logo"/>
@@ -34,7 +35,7 @@
             </ul>
 
             <div class="favorites-label">
-                <i class="fa-solid fa-star favorite-icon__nav-bar"></i>
+                <i class="fa-solid fa-star favorite-icon__nav-bar favorite-off"></i>
             </div>
             
             <!-- Menu favoritos -->
@@ -46,9 +47,7 @@
 
                 <div class="favorites-container">
                     <div class="favorite-art">
-                        <div class="favorite-art__img" 
-                             style="background-image:url(./Assets/Images/escenario\ ejemplo.jpg)">                            
-                        </div>                        
+                        <img src="./Assets/Images/teatro real san martin.webp" alt="Imagen de ejemplo" class="favorite-art__img">
 
                         <div class="favorite-art__info">
                             <h3 class="favorite-art__title">Título de la noticia</h3>
@@ -70,7 +69,7 @@
 
     <main class="main">
         <!-- Hero -->
-        <div class="hero">
+        <section class="hero">
             <div class="hero-info">
                 <h1 class="hero-title">Canal Cultural Cordoba</h1>
                 <h2 class="hero-slogan">Las últimas noticias del teatro, la música, el cine y las artes visuales. Información, fotos y videos sobre los últimos estrenos, conciertos, muestras y tus artistas favoritos.</h2>
@@ -87,10 +86,10 @@
                     <button class="singup-btn btn"><a href="#">Registrate</a></button>
                 </div>
             </div>
-        </div>
+        </section>
 
         <!-- Beneficios -->
-        <div class="benefit">
+        <section class="benefit">
             <h2 class="benefit-title">¡No te pierdas nuestros beneficios!</h2>
 
             <div class="benefit-box">
@@ -124,12 +123,10 @@
                     </div> 
                 </div>
             </div>
-
-
-        </div>
+        </section>
 
         <!-- Noticias -->
-        <div class="news">
+        <section class="news">
             <h2 class="news-title">Noticias</h2>
 
             <div class="categories-box">
@@ -151,54 +148,7 @@
                     <div class="art-info">
                         <h3 class="art-category">Teatro</h3>
                         <h3 class="art-date">5 de noviembre 2022</h3>
-                    </div>
-
-                    <div class="art-content">
-                        <img class="art-img" src="./Assets/Images/escenario ejemplo.jpg" alt="">
-                        <h2 class="art-title">Este es el título de la noticia</h2>
-                    </div>
-                </div>
-
-                <div class="art-box">
-                    <div class="art-info">
-                        <h3 class="art-category">Teatro</h3>
-                        <h3 class="art-date">5 de noviembre 2022</h3>
-                    </div>
-
-                    <div class="art-content">
-                        <img class="art-img" src="./Assets/Images/Quality1.jpg" alt="">
-                        <h2 class="art-title">Este es el título de la noticia</h2>
-                    </div>
-                </div>
-
-                <div class="art-box">
-                    <div class="art-info">
-                        <h3 class="art-category">Teatro</h3>
-                        <h3 class="art-date">5 de noviembre 2022</h3>
-                    </div>
-
-                    <div class="art-content">
-                        <img class="art-img" src="./Assets/Images/museo evita 2.jpg" alt="">
-                        <h2 class="art-title">Este es el título de la noticia</h2>
-                    </div>
-                </div>
-
-                <div class="art-box">
-                    <div class="art-info">
-                        <h3 class="art-category">Teatro</h3>
-                        <h3 class="art-date">5 de noviembre 2022</h3>
-                    </div>
-
-                    <div class="art-content">
-                        <img class="art-img" src="./Assets/Images/piojera 1.jpg" alt="">
-                        <h2 class="art-title">Este es el título de la noticia</h2>
-                    </div>
-                </div>
-
-                <div class="art-box">
-                    <div class="art-info">
-                        <h3 class="art-category">Teatro</h3>
-                        <h3 class="art-date">5 de noviembre 2022</h3>
+                        <i class="fa-solid fa-star favorite__art-info favorite-off"></i>
                     </div>
 
                     <div class="art-content">
@@ -207,12 +157,66 @@
                     </div>
                 </div>
             </div>
+        </section>
+
+        <!-- Contacto -->
+        <section class="contact">
+            <!-- <div class="contact-title">
+                Contactanos
+            </div> -->
+
+            <div class="contact-slogan">
+                Seguinos en nuestras redes para no perderte nada.
+            </div>
+
+            <nav class="contact_nav-list">
+                <ul class="contact-ul">
+                    <li class="contact-item">
+                        <a href="#">
+                            <i class="fa-brands fa-square-instagram contact-icon"></i>
+                            <span class="contact-span">@canalcultural.cba</span>
+                        </a>
+                    </li>
+
+                    <li class="contact-item">
+                        <a href="#">
+                            <i class="fa-brands fa-square-facebook contact-icon"></i>
+                            <span class="contact-span">/canalcultural.cba</span>   
+                        </a>
+                    </li>
+
+                    <li class="contact-item">
+                        <a href="#">
+                            <i class="fa-brands fa-square-twitter contact-icon"></i>
+                            <span class="contact-span">canalcultural.cba.ok</span>
+                        </a>
+                    </li>
+
+                    <li class="contact-item">
+                        <a href="#">
+                            <i class="fa-brands fa-square-youtube contact-icon"></i>
+                            <span class="contact-span">Canal Cultural Ccórdoba</span>
+                        </a>
+                    </li>
+
+                    <li class="contact-item">
+                        <a href="#">
+                            <i class="fa-solid fa-square-envelope contact-icon"></i>
+                            <span class="contact-span">contacto@canalculturalcba.com</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </section>
+     </main>
+
+    <footer class="footer">
+        <div class="footer-info">
+            <img src="./Assets/Images/Logo.png" alt="Logo de Conexión Cultural Córdoba" class="logo footer-logo"/>
+            <p class="footer-text">Canal Cultural córdoba es un sitio que publica información destacada de la provincia de Córdoba, Argentina. Todos los Derechos Reservados - Calle falsa 123 - Registro de la Propiedad Intelectual RE-2023-99999999-AA-ZZZZ#BB Editor Responsable: Cosme Fulanito</p>
         </div>
-        
-    </main>
 
-    <footer>
-
+        <p class="footer-copyrigth">© Copyright 2023 - Canal Cultural Córdoba</p>
     </footer>
     <script src="./Assets/data.js"></script>
     <script src="./Assets/index.js"></script    
