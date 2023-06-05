@@ -1,0 +1,267 @@
+/* ------POsicionamiento y scroll suave en la navegación--------- */
+    :target {
+        scroll-margin: 60px;
+    }
+  
+    html {
+        scroll-behavior: smooth;
+    }
+  
+/*------------------- Hover de los navbar links--------------- */
+    .navbar-list li {
+        position: relative;
+    }
+
+    .underline {
+        width: 100%;
+        height: 2px;
+        background: var(--logo-text);
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        transform: scaleX(0);
+        transform-origin: bottom right;
+        transition: transform 0.15s ease;
+    }
+    .navbar-list li:hover > .underline {
+        transform-origin: bottom left;
+        transform: scaleX(1);
+    }
+
+/* ---------------Overlay de los menus desplegables ---------------*/
+    .overlay {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        height: 100vh;
+        width: 100%;
+        z-index: 1;
+        background: rgba(255, 255, 255, 0.05);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+    }
+
+/*---------------Microinteracción: escalar---------------*/
+    .hoverScale {
+        transition: all 0.3s linear;
+    }
+
+    .hoverScale:hover {
+        transform: scale(1.02);
+        transition: all 0.3s linear;
+    }
+    
+    /* Icono de favoritos de cada articulo */
+    .art-favoriteIcon i {
+        transition: all 0.3s linear;
+    }
+
+    .art-favoriteIcon i:hover {
+        transform: scale(1.1);
+        transition: all 0.3s linear;
+    }
+
+/* -------Microinteracción: Pintar icono favoritos------ */
+    .favorite-off {
+        transition: all 0.1s linear;
+    }
+
+    .favorite-off:hover {
+        color: var(--old-gold);
+    }
+
+/* -------Microinteracción: Despintar icono favoritos------ */
+    .favorite-on {
+        transition: all 0.1s linear;
+    }
+
+    .favorite-on:hover {
+        color: var(--timberwolf);
+    }
+
+/*------------Hover de botones login y register------------ */
+    .btn {
+        transition: all 0.1s linear;
+    }    
+    .btn:hover {
+        background: var(--timberwolf); 
+    }
+
+/*------------------- TRASLACIONES ------------------------*/
+
+    @keyframes from-left {
+        0% {
+            opacity: 0;
+            transform: translateX(-200%);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes from-right {
+        0% {
+            opacity: 0;
+            transform: translateX(200%);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes from-bottom {
+        0% {
+            opacity: 0;
+            transform: translateY(600%);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+        /* Translaciones de tarjetas de beneficios */
+        #benefit:target .benefitCard:nth-child(1){
+            animation: from-bottom 1s ease-in;
+        }
+    
+        #benefit:target .benefitCard:nth-child(2){
+            animation: from-bottom 1.3s ease-in-out;
+        }
+    
+        #benefit:target .benefitCard:nth-child(3){
+            animation: from-bottom 1.5s ease-out;
+        }
+    
+        /* Translaciones de los botones de categorias */
+        #news:target .categories-btn:nth-child(1){
+            animation: from-bottom 0.5s ease-in;
+        }
+    
+        #news:target .categories-btn:nth-child(2){
+            animation: from-bottom 0.6s ease-in;
+        }
+    
+        #news:target .categories-btn:nth-child(3){
+            animation: from-bottom 0.7s ease-in;
+        }
+    
+        #news:target .categories-btn:nth-child(4){
+            animation: from-bottom 0.8s ease-in;
+        }
+    
+        #news:target .categories-btn:nth-child(5){
+            animation: from-bottom 0.9s ease-in;
+        }
+    
+        #news:target .categories-btn:nth-child(6){
+            animation: from-bottom 1s ease-in;
+        }
+
+        /* Translaciones de los li de contacto */
+        #contact:target .contact-item:nth-child(1) {
+            animation: from-left 0.7s ease-in-out;
+        }
+
+        #contact:target .contact-item:nth-child(2) {
+            animation: from-left 0.9s ease-in-out;
+        }
+
+        #contact:target .contact-item:nth-child(3) {
+            animation: from-left 1.2s ease-in-out;
+        }
+
+        #contact:target .contact-item:nth-child(4) {
+            animation: from-left 1.5s ease-in-out;
+        }
+
+        #contact:target .contact-item:nth-child(5) {
+            animation: from-left 1.8s ease-in-out;
+        }
+    
+
+/*------------------ ANIMACIÓN VIBRAR------------------------ */
+
+    @keyframes vibrar {
+        0% {
+            transform: rotate(4deg);
+        }
+        15% {
+            transform: rotate(-4deg);
+        }
+        29% {
+            transform: rotate(4deg);
+        }
+        44% {
+            transform: rotate(-4deg);
+        }
+        58% {
+            transform: rotate(4deg);
+        }
+        73% {
+            transform: rotate(-4deg);
+        }
+        87% {
+            transform: rotate(4deg);
+        }
+        100% {
+            transform: rotate(0);
+        }
+    }
+
+    /* Vibración del título de beneficios */
+    #benefit:target .benefit-title {
+        animation: vibrar 0.4s;
+        animation-iteration-count: 2;
+    }
+
+/*----Hover de botones de login y register----- */
+    .formSection-btn {
+        transition: all 0.1s linear;    
+    }  
+
+    .formSection-btn:hover {
+        background: var(--onix);
+        color: var(--myrtle-green);
+    }
+
+    .formSection-regBtn:hover {
+        background: var(--timberwolf);
+        border: 1px solid;
+        border-color: var(--onix);
+        color: var(--onix);
+      }
+
+
+
+
+/*-----------------------------------------------------------------------------------------------  */
+/* -----------------MEDIAQUERIES DE ANIMACIONES---------------------------------------------------- */
+
+@media (min-width: 768px) {
+    .overlay {
+        top: 80px;
+    }
+
+    :target {
+        scroll-margin: 80px;
+    }
+} 
+
+@media (min-width: 1040px) {
+    .overlay {
+        top: 100px;
+    }
+
+    :target {
+        scroll-margin: 100px;
+    }
+} 
+  
+  

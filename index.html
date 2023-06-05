@@ -20,47 +20,63 @@
 
 <body>
     <header class="header">
-        <img src="./Assets/Images/Logo.png" alt="Logo de Conexión Cultural Córdoba" class="logo"/>
+        <a href="#hero"><img src="./Assets/Images/Logo.png" alt="Logo de Conexión Cultural Córdoba" class="logo"/></a>
 
-        <nav class="nav-bar">
+        <nav class="navbar">
              <div class="menu-label">
                 <i class="fa-solid fa-bars menu-icon"></i>
             </div>
 
             <!-- Navegación -->
-            <ul class="nav-bar_list" >
-                <li><a class="nav-bar_link" href="#">Opción 1 </a></li>
-                <li><a class="nav-bar_link" href="#">Opción 2 </a></li>
-                <li><a class="nav-bar_link" href="#">Opción 3 </a></li>
+            <ul class="navbar-list" >
+                <li>
+                    <a class="navbar-link" href="#news">Noticias</a> 
+                    <div class="underline"></div> 
+                </li>
+
+                <li>
+                    <a class="navbar-link" href="#hero">Inicio</a>
+                    <div class="underline"></div> 
+                </li>
+
+                <li>
+                    <a class="navbar-link" href="#benefit">Beneficios</a>
+                    <div class="underline"></div> 
+                </li>
+
+                <li>
+                    <a class="navbar-link" href="#contact">Contacto</a>
+                    <div class="underline"></div> 
+                </li>
             </ul>
 
             <div class="favorites-label">
-                <i class="fa-solid fa-star favorite-icon__nav-bar favorite-off"></i>
+                <i class="fa-solid fa-star navbar-favoriteIcon favorite-empty"></i>
             </div>
             
             <!-- Menu favoritos -->
-            <div class="favorites-menu">
-                <div class="favorites-menu__titleBox">
+            <div class="favoritesMenu">
+                <div class="favorites-titleBox">
                     <h2 class="favorites-title">Tus noticias favoritas</h2>  
-                    <i class="fa-solid fa-star favorite-icon__favorites-menu"></i>            
+                    <i class="fa-solid fa-star favoritesMenu-icon"></i>            
                 </div>
 
                 <div class="favorites-container">
-                    <div class="favorite-art">
-                        <img src="./Assets/Images/teatro real san martin.webp" alt="Imagen de ejemplo" class="favorite-art__img">
+                    <div class="favoriteArt">
+                        <img src="./Assets/Images/teatro real san martin.webp" alt="Imagen de ejemplo" class="favoriteArt-img">
 
-                        <div class="favorite-art__info">
-                            <h3 class="favorite-art__title">Título de la noticia</h3>
-                            <p class="favorite-art__date">5 de noviembre 2022</p>
-                        </div>
-
-                        <button class="removeBtn">
+                        <a class="favoriteArt-info hoverScale" href="#">
+                            <h3 class="favoriteArt-title">Título de la noticia</h3>
+                            <p class="favoriteArt-date">5 de noviembre 2022</p>
+                        </a>
+                      
+                        <button class="removeBtn hoverScale">
                             <i class="fas fa-trash trash-icon"></i>
                         </button>                      
                     </div>
                 </div>
 
-                <button class="cleanFavorites-btn">Borrar todos</button>
+                <button class="cleanFavorites-btn hoverScale">Borrar todos</button>
             </div>
 
             <div class="overlay hidden"></div>
@@ -69,7 +85,7 @@
 
     <main class="main">
         <!-- Hero -->
-        <section class="hero">
+        <section class="hero" id="hero">
             <div class="hero-info">
                 <h1 class="hero-title">Canal Cultural Cordoba</h1>
                 <h2 class="hero-slogan">Las últimas noticias del teatro, la música, el cine y las artes visuales. Información, fotos y videos sobre los últimos estrenos, conciertos, muestras y tus artistas favoritos.</h2>
@@ -89,58 +105,58 @@
         </section>
 
         <!-- Beneficios -->
-        <section class="benefit">
+        <section class="benefit" id="benefit">
             <h2 class="benefit-title">¡No te pierdas nuestros beneficios!</h2>
 
             <div class="benefit-box">
-                <div class="benefit-card">
+                <div class="benefitCard">
                     <div class="benefit-icon">
                         <i class="Fas fa-regular fa-ticket"></i>
                     </div>
-                    <div class="benefit-card-info">
-                        <h3 class="benefit-card-title">Tikets</h3>
-                        <p class="benefit-card-text">Entradas y descuentos para tus eventos</p>
+                    <div class="benefitCard-info">
+                        <h3 class="benefitCard-title">Tikets</h3>
+                        <p class="benefitCard-text">Entradas y descuentos para tus eventos</p>
                     </div> 
                 </div>
     
-                <div class="benefit-card">
+                <div class="benefitCard">
                     <div class="benefit-icon">
                         <i class="Fas fa-solid fa-newspaper"></i>
                     </div>
-                    <div class="benefit-card-info">
-                        <h3 class="benefit-card-title">News</h3>
-                        <p class="benefit-card-text">Enterate primero de todas las noticias</p> 
+                    <div class="benefitCard-info">
+                        <h3 class="benefitCard-title">News</h3>
+                        <p class="benefitCard-text">Enterate primero de todas las noticias</p> 
                     </div> 
                 </div>
     
-                <div class="benefit-card">
+                <div class="benefitCard">
                     <div class="benefit-icon">
                         <i class="fa-solid fa-video"></i>
                     </div>
-                    <div class="benefit-card-info">
-                        <h3 class="benefit-card-title">Premiers</h3>
-                        <p class="benefit-card-text">Acceso esclusivo a estrenos en el cine</p>
+                    <div class="benefitCard-info">
+                        <h3 class="benefitCard-title">Premiers</h3>
+                        <p class="benefitCard-text">Acceso esclusivo a estrenos en el cine</p>
                     </div> 
                 </div>
             </div>
         </section>
 
         <!-- Noticias -->
-        <section class="news">
+        <section class="news" id="news">
             <h2 class="news-title">Noticias</h2>
 
             <div class="categories-box">
-                <button class="categories-btn" data-category="">Todas</button>
+                <button class="categories-btn hoverScale" data-category="">Todas</button>
 
-                <button class="categories-btn" data-category="">Música</button>
+                <button class="categories-btn hoverScale" data-category="">Música</button>
 
-                <button class="categories-btn" data-category="">Teatro</button>
+                <button class="categories-btn hoverScale" data-category="">Teatro</button>
 
-                <button class="categories-btn category-active" data-category="">Cine</button>
+                <button class="categories-btn hoverScale category-active" data-category="">Cine</button>
 
-                <button class="categories-btn" data-category="">Visuales</button>
+                <button class="categories-btn hoverScale" data-category="">Visuales</button>
 
-                <button class="categories-btn" data-category="">Danza</button>
+                <button class="categories-btn hoverScale" data-category="">Danza</button>
             </div>
             
             <div class="news-section">
@@ -148,19 +164,19 @@
                     <div class="art-info">
                         <h3 class="art-category">Teatro</h3>
                         <h3 class="art-date">5 de noviembre 2022</h3>
-                        <i class="fa-solid fa-star favorite__art-info favorite-off"></i>
+                        <div class="art-favoriteIcon"><i class="fa-solid fa-star favorite-off hoverScale"></i></div>
                     </div>
 
                     <div class="art-content">
                         <img class="art-img" src="./Assets/Images/escenario ejemplo.jpg" alt="">
-                        <h2 class="art-title">Este es el título de la noticia</h2>
+                        <a href="#"><h2 class="art-title hoverScale">Este es el título de la noticia</h2></a>                        
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Contacto -->
-        <section class="contact">
+        <section class="contact" id="contact">
             <!-- <div class="contact-title">
                 Contactanos
             </div> -->
@@ -169,7 +185,7 @@
                 Seguinos en nuestras redes para no perderte nada.
             </div>
 
-            <nav class="contact_nav-list">
+            <nav class="contact-navList">
                 <ul class="contact-ul">
                     <li class="contact-item">
                         <a href="#">

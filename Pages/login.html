@@ -1,0 +1,60 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../Assets/styles.css" />
+    <link rel="stylesheet" href="../Assets/mediaqueries.css" />
+    <link rel="stylesheet" href="../Assets/animaciones.css" />
+        
+    <!-- Fontawesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" 
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" 
+        crossorigin="anonymous" 
+        referrerpolicy="no-referrer" 
+    />
+</head>
+
+<body>
+    <header class="header pages-header">
+        <a href="../index.html"><img src="../Assets/Images/Logo.png" alt="Logo de Conexión Cultural Córdoba" class="logo"/></a>
+    </header>
+
+    <main class="main">
+        <section class="formSection login">
+            <h2 class="login-title">Iniciá sesión</h2>
+            <form class="form login-form" action="">
+                <div class="form-item">
+                    <label class="form-label" for="mail-input">Mail: </label>
+                    <input class="form-input" id="mail-input" type="email">
+                    <p class="form-alertMsg hidden">Este es un mensaje de alerta</p>
+                </div>
+
+                <div class="form-item">
+                    <label class="form-label" for="pass-input">Contraseña: </label>
+                    <input class="form-input imput-alert" id="pass-input" type="password">
+                    <p class="form-alertMsg">Este es un mensaje de alerta</p>
+                </div>
+
+                <button class="btn formSection-btn hoverScale">Iniciar</button>
+
+                <a href="../Pages/singup.html" class="btn formSection-btn formSection-regBtn">Crear cuenta</a>
+            </form>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-info">
+            <img src="../Assets/Images/Logo.png" alt="Logo de Conexión Cultural Córdoba" class="logo footer-logo"/>
+            <p class="footer-text">Canal Cultural córdoba es un sitio que publica información destacada de la provincia de Córdoba, Argentina. Todos los Derechos Reservados - Calle falsa 123 - Registro de la Propiedad Intelectual RE-2023-99999999-AA-ZZZZ#BB Editor Responsable: Cosme Fulanito</p>
+        </div>
+
+        <p class="footer-copyrigth">© Copyright 2023 - Canal Cultural Córdoba</p>
+    </footer>
+    <script src="../Assets/data.js"></script>
+    <script src="../Assets/index.js"></script    
+</body>
+</html>
