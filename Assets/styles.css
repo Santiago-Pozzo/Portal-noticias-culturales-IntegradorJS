@@ -208,9 +208,30 @@
 
 /* ------------------------- Main ---------------------------*/
 .main {
-  margin-top: 55px;
+  margin-top: 30px;
   padding: 0;
+  display: flex;
+  flex-direction: column;
 }
+  /* Sticky usuario */
+  .sticky {
+    z-index: 3;
+    width: fit-content;
+    text-align: center;
+    position: sticky;
+    top: 62px;
+    background: var(--myrtle-green);
+    padding: 3px 10px;
+    border-radius: 15px;
+    border: 1px solid;
+    border-color: black;
+    font-family: rambla;
+    font-size: 12px;
+    font-weight: 400;
+    margin-top: 0;
+    left: 10px;
+  }
+
   /* Hero */
    .hero {
     width: 100%;
