@@ -3,6 +3,11 @@ const showMoreBtn = document.querySelector(".btn-seeMore");
 const categoriesBox = document.querySelector(".categories-box"); 
 const categoriesBtnsAll = document.querySelectorAll(".categories-btn");
 const headerFavoritesBtn = document. querySelector(".favorites-label");
+const favoritesMenu = document.querySelector(".favoritesMenu");
+const navMenu = document.querySelector(".navbar-list");
+const hamburgerBtn = document.querySelector(".menu-label");
+const overlay = document.querySelector(".overlay");
+
 
 //Renderizar noticias
     const createArtTemplate = (art) => {
@@ -108,12 +113,62 @@ const aplyFilter = ({ target }) => {
     renderNews(appState.articles[0]);
 }
 
+//Abrir y cerrar menú favoritos
+const toggleFavMenu = () => {
+    favoritesMenu.classList.toggle("favorites-open");
+    if (navMenu.classList.contains("navbar-open")) {
+        navMenu.classList.remove("navbar-open");
+        return;
+    }
+    overlay.classList.toggle("hidden");
+}
 
-//--------------------Init-----------------------
+//Abrir y cerrar menú hamburguesa
+const toggleNavMenu = () => {
+    navMenu.classList.toggle("navbar-open");
+    if (favoritesMenu.classList.contains("favorites-open")) {
+        favoritesMenu.classList.remove("favorites-open");
+        return;
+    }
+    overlay.classList.toggle("hidden");
+}
+
+//Cerrar menúes al scrollear
+const closeMenuOnScroll = () => {
+    if (navMenu.classList.contains("navbar-open") 
+     || favoritesMenu.classList.contains("favorites-open")) {
+        favoritesMenu.classList.remove("favorites-open");
+        navMenu.classList.remove("navbar-open");
+        overlay.classList.add("hidden");
+    }
+}
+
+//Cerrar menúes al clickear en el overlay
+const closeMenuOnClick = () => {
+    favoritesMenu.classList.remove("favorites-open");
+    navMenu.classList.remove("navbar-open");
+    overlay.classList.add("hidden");
+}
+
+//Cerrar nav menú al clickear una opción 
+const closeNavMenuOnClick = (e) => {
+    if (e.target.classList.contains("navbar-link")){
+        navMenu.classList.remove("navbar-open");
+        overlay.classList.add("hidden");
+    }
+}
+
+
+//---------------------------Init--------------------------------
 const init  = () => {
     renderNews(appState.articles[appState.currentIndex]);
     showMoreBtn.addEventListener("click", showMorreArts);
     categoriesBox.addEventListener("click", aplyFilter);
+    headerFavoritesBtn.addEventListener("click", toggleFavMenu);
+    hamburgerBtn.addEventListener("click", toggleNavMenu);
+    window.addEventListener("scroll", closeMenuOnScroll);
+    overlay.addEventListener("click", closeMenuOnClick);
+    navMenu.addEventListener(("click", closeNavMenuOnClick));
 };
 
 init ();
