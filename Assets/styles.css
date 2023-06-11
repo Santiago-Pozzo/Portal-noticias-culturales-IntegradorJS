@@ -498,6 +498,7 @@
   }
 
     .art-favoriteIcon {   
+     border: none;
      display: flex;
      align-items: center;
      justify-content: center;
@@ -529,9 +530,16 @@
 
   .art-title {
     font-family: rambla;
-    font-size: 20px;
+    font-size: 17px;
     font-weight: 600;
     color: var(--eerie-black);
+  }
+
+  .btn-seeMore {
+    background-color: var(--myrtle-green);
+    font-family: rambla;
+    font-weight: 400;
+    font-size: 15px;
   }
 
   /* Contacto */
