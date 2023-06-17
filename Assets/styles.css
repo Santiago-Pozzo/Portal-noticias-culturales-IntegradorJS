@@ -517,9 +517,9 @@
      cursor: pointer;
   }
 
-   .art-favoriteIcon i {
+   /* .art-favoriteIcon i {
     color: var(--timberwolf);
-   }
+   } */
 
   .art-favoriteIcon i {
       font-size: 80%;

@@ -1,6 +1,6 @@
 const newsSection = document.querySelector(".news-section");
 const showMoreBtn = document.querySelector(".btn-seeMore");
-const categoriesBox = document.querySelector(".categories-box"); 
+const categoriesBox = document.querySelector(".categories-box");
 const categoriesBtnsAll = document.querySelectorAll(".categories-btn");
 const headerFavoritesBtn = document. querySelector(".favorites-label");
 const favoritesMenu = document.querySelector(".favoritesMenu");
@@ -24,16 +24,26 @@ const saveFavoritesOnLocalStorage = () => {
 }
 
 
+
 //Renderizar noticias
             //Checkeo si un articulo está en favoritos
-            const isFavoriteArt = (id) => { 
+            const isFavoriteArt = (id) => {
                   return favorites.some((art) => {
-                    return art.id === id;
-                });
+                     return art.id == id;
+                  });
             }
 
+            const favoriteClassName = (isFav) => {
+                if (isFav) {
+                    return "favorite-active";
+                } else {
+                    return "favorite-empty";
+                }
+            }
     const createArtTemplate = (art) => {
         const {id, title, date, img, category, favorite} = art;
+        
+        let className = favoriteClassName(isFavoriteArt(id));
 
         return `
             <div class="art-box">
@@ -46,19 +56,20 @@ const saveFavoritesOnLocalStorage = () => {
                     data-date="${date}"
                     data-img="${img}"
                     data-category="${category}"
-                    data-favorite="${favorite}"
+                    data-favorite="${isFavoriteArt(id)}"
                     class="art-favoriteIcon">
-                        <i class="fa-solid fa-star hoverScale"></i>
+                        <i class="fa-solid fa-star ${className} hoverScale"></i>
                     </button>
                 </div>
 
                 <div class="art-content">
                     <img class="art-img" src="${img}" alt="${title}">
-                    <a href="./Pages/article.html"" target="_blank"><h2 class="art-title hoverScale">${title}</h2></a>                        
+                    <a href="./Pages/article.html"" target="_blank"><h2 class="art-title hoverScale">${title}</h2></a>
                 </div>
             </div>
         `
     }
+
 
 const renderNews = (artList) => {
     newsSection.innerHTML += artList.map(createArtTemplate).join("");
@@ -82,7 +93,7 @@ const showMorreArts = () => {
     const isInactiveFilterBtn = (btn) => {
         return (
             btn.classList.contains("categories-btn") && !btn.classList.contains("category-active")
-        )        
+        )
     }
 
         const changeBtnState = (selectCategory) => {
@@ -156,7 +167,7 @@ const toggleNavMenu = () => {
 
 //Cerrar menúes al scrollear
 const closeMenuOnScroll = () => {
-    if (navMenu.classList.contains("navbar-open") 
+    if (navMenu.classList.contains("navbar-open")
      || favoritesMenu.classList.contains("favorites-open")) {
         favoritesMenu.classList.remove("favorites-open");
         navMenu.classList.remove("navbar-open");
@@ -171,7 +182,7 @@ const closeMenuOnClick = () => {
     overlay.classList.add("hidden");
 }
 
-//Cerrar nav menú al clickear una opción 
+//Cerrar nav menú al clickear una opción
 const closeNavMenuOnClick = (e) => {
     if (e.target.classList.contains("navbar-link")){
         navMenu.classList.remove("navbar-open");
@@ -193,14 +204,14 @@ const closeNavMenuOnClick = (e) => {
                     <h3 class="favoriteArt-title">${title}</h3>
                     <p class="favoriteArt-date">${date}</p>
                 </a>
-            
-                <button 
+
+                <button
                     data-id="${id}"
                     data-title="${title}"
                     data-date="${date}"
                     data-img="${img}"
                     data-category="${category}"
-                    data-favorite="${favorite}"  
+                    data-favorite="${favorite}"
                     class="removeBtn hoverScale">
                         <i class="fas fa-trash trash-icon"></i>
                 </button>
@@ -209,6 +220,7 @@ const closeNavMenuOnClick = (e) => {
     }
 
 const renderFavorites = () => {
+
     if (!favorites.length) {
         favoritesContainer.innerHTML = `
             <div class="emptyFavorites-msg">No tienes artículos favoritos</div>
@@ -231,7 +243,7 @@ const renderFavorites = () => {
 
 //Agregar y quitar artículo favorito
     clickOnFavBtn = (target) => {
-        return target.classList.contains("art-favoriteIcon") 
+        return target.classList.contains("art-favoriteIcon")
         || target.parentNode.classList.contains("art-favoriteIcon");
     }
 
@@ -241,7 +253,7 @@ const renderFavorites = () => {
     }
 
     const  removeFavoriteArt = (art) => {
-        
+
         favorites = favorites.filter((item) => {
             return item.id !== art.id;
         });
@@ -282,20 +294,27 @@ const setFavArt = ({target}) => {
         target = target.parentNode;
     }
 
+    icon = target.firstElementChild;
+
     const article = createArtData(target.dataset);
-   
 
     if (isFavoriteArt(article.id) === false) {
         createFavoriteArt (article);
         showMsgModal("Se agregó a tus artículos favoritos");
+        icon.classList.remove("favorite-empty")
+        icon.classList.add("favorite-active")
+
     }  else {
         removeFavoriteArt (article);
-        showMsgModal("Se quitó de tus artículos favoritos"); 
-    } 
+        showMsgModal("Se quitó de tus artículos favoritos");
+        target.firstElementChild.classList.remove("favorite-active")
+        icon.classList.remove("favorite-active")
+        icon.classList.add("favorite-empty")
+    }
 }
 
     clickOnTrashBtn = (target) => {
-        return target.classList.contains("removeBtn") 
+        return target.classList.contains("removeBtn")
         || target.parentNode.classList.contains("removeBtn");
     }
 const removeFavoriteArtFromList = ({target}) => {
@@ -315,7 +334,7 @@ const removeFavoriteArtFromList = ({target}) => {
 
     const isCleanFavoritesBtn = (target) => {
        return target.classList.contains("cleanFavorites-btn");
-    } 
+    }
 
 const cleanFavorites = ({target}) => {
     if (isCleanFavoritesBtn(target)){
@@ -347,7 +366,7 @@ const init  = () => {
     window.addEventListener("scroll", closeMenuOnScroll);
     overlay.addEventListener("click", closeMenuOnClick);
     navMenu.addEventListener("click", closeNavMenuOnClick);
-    document.addEventListener("DOMContentLoad", renderFavorites);
+    document.addEventListener("DOMContentLoaded", renderFavorites);
     newsSection.addEventListener("click", setFavArt);
     newsSection.addEventListener("click", openArtID);
     favoritesContainer.addEventListener("click", removeFavoriteArtFromList);
@@ -355,4 +374,3 @@ const init  = () => {
 };
 
 init ();
-
