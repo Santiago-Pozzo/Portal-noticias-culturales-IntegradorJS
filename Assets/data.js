@@ -1,4 +1,4 @@
-let artsData = [
+const artsData = [
     {
         id: 1,
         title: "El Festival Internacional de Danza de Córdoba pasó por la Legislatura",
@@ -109,7 +109,7 @@ let artsData = [
 ]
 
 
-let divideArtsInParts = (size) => {
+const divideArtsInParts = (size) => {
     let artList = [];
     for (let i = 0; i < artsData.length; i+= size) {
         artList.push(artsData.slice(i, i + size));
@@ -117,9 +117,10 @@ let divideArtsInParts = (size) => {
     return artList;
 }
 
-let appState = {
+const appState = {
     articles: divideArtsInParts(5),
     currentIndex: 0,
     artsLimit: divideArtsInParts(5).length,
     activeFilter: null,
 }
+

@@ -140,6 +140,14 @@
     margin-bottom: 10px;
   }
 
+  .emptyFavorites-msg {
+    text-align: center;
+    font-family: unna;
+    font-size: 18px;
+    font-weight: 200;
+    color: var(--myrtle-green);
+  }
+
   .favoriteArt {
     display: flex;
     align-items: center;
@@ -203,6 +211,7 @@
     font-weight: 600;
     font-size: 13px;
     color: var(--eerie-black);
+    cursor: pointer;
   }
 
 
@@ -508,6 +517,10 @@
      cursor: pointer;
   }
 
+   .art-favoriteIcon i {
+    color: var(--timberwolf);
+   }
+
   .art-favoriteIcon i {
       font-size: 80%;
   }
@@ -644,6 +657,30 @@
     font-weight: 200;
     color: var(--myrtle-green);
   }
+
+  /* Modal */
+  .add-modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 0;
+    text-align: center;
+    background-color: var(--old-gold);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    transform: translateY(200%);
+    transition: all 0.5s ease-in;
+    font-family: rambla;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--onix);
+  }
+
+  .active-modal {
+    transform: translateY(0);
+    transition: all 0.5s ease-in;
+  }
 /* ----------------------------------------------------------*/
 
 .hidden {
@@ -680,7 +717,10 @@
   transition: 0.5s;
 }
 
-/* Boton favorito del navbar: menu vacio o con algún articulo cargado */
+
+
+
+/* Botones de favoritos on y off*/
 .favorite-active {
   color: var(--old-gold);
 }
@@ -688,16 +728,6 @@
 .favorite-empty {
   color: var(--timberwolf);
 }
-
-/* Boton favoritos de los articulos: articulo en favoritos o no */
-.favorite-on {
-  color: var(--old-gold);
-}
-
-.favorite-off {
-  color: var(--timberwolf);
-}
-
 
 /* ------------------------------------------------------------------------------------------- */
 

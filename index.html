@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Canal Cultural Córdoba</title>
 
+    <!-- Página de articulo abierto -->
+    <link rel="import" href="./Pages/article.html">
+
     <!-- CSS -->
     <link rel="stylesheet" href="./Assets/styles.css" />
     <link rel="stylesheet" href="./Assets/mediaqueries.css" />
@@ -58,11 +61,13 @@
             <div class="favoritesMenu">
                 <div class="favorites-titleBox">
                     <h2 class="favorites-title">Tus noticias favoritas</h2>  
-                    <i class="fa-solid fa-star favoritesMenu-icon"></i>            
+                    <i class="fa-solid fa-star  favoritesMenu-icon"></i>            
                 </div>
 
                 <div class="favorites-container">
-                    <div class="favoriteArt">
+
+                    <!-- Ejemplo de articulo en favoritos -->
+                    <!-- <div class="favoriteArt">
                         <img src="./Assets/Images/teatro real san martin.webp" alt="Imagen de ejemplo" class="favoriteArt-img">
 
                         <a class="favoriteArt-info hoverScale" href="#">
@@ -73,7 +78,9 @@
                         <button class="removeBtn hoverScale">
                             <i class="fas fa-trash trash-icon"></i>
                         </button>                      
-                    </div>
+                    </div>  -->
+
+                    <div class="emptyFavorites-msg">No tienes artículos favoritos</div>
                 </div>
 
                 <button class="cleanFavorites-btn hoverScale">Borrar todos</button>
@@ -169,12 +176,12 @@
                     <div class="art-info">
                         <h3 class="art-category">Teatro</h3>
                         <h3 class="art-date">5 de noviembre 2022</h3>
-                        <div class="art-favoriteIcon"><i class="fa-solid fa-star favorite-off hoverScale"></i></div>
+                        <div class="art-favoriteIcon"><i class="fa-solid fa-star favorite-false hoverScale"></i></div>
                     </div>
 
                     <div class="art-content">
                         <img class="art-img" src="./Assets/Images/escenario ejemplo.jpg" alt="">
-                        <a href="#"><h2 class="art-title hoverScale">Este es el título de la noticia</h2></a>                        
+                        <a href="./Pages/article.html"><h2 class="art-title hoverScale">Este es el título de la noticia</h2></a>                        
                     </div>
                 </div> -->
                 <!-- FIN NOTICIA HARDCODEADA -->
@@ -243,6 +250,7 @@
 
         <p class="footer-copyrigth">© Copyright 2023 - Canal Cultural Córdoba</p>
     </footer>
+    <div class="add-modal"></div>
     <script src="./Assets/data.js"></script>
     <script src="./Assets/index.js"></script>    
 </body>

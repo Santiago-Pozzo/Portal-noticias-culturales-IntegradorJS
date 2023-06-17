@@ -63,20 +63,20 @@
     }
 
 /* -------Microinteracción: Pintar icono favoritos------ */
-    .favorite-off {
+    .favorite-false {
         transition: all 0.1s linear;
     }
 
-    .favorite-off:hover {
+    .favorite-false:hover {
         color: var(--old-gold);
     }
 
 /* -------Microinteracción: Despintar icono favoritos------ */
-    .favorite-on {
+    .favorite-true {
         transition: all 0.1s linear;
     }
 
-    .favorite-on:hover {
+    .favorite-true:hover {
         color: var(--timberwolf);
     }
 

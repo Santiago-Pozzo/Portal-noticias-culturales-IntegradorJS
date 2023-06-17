@@ -7,9 +7,31 @@ const favoritesMenu = document.querySelector(".favoritesMenu");
 const navMenu = document.querySelector(".navbar-list");
 const hamburgerBtn = document.querySelector(".menu-label");
 const overlay = document.querySelector(".overlay");
+const headerFavIcon = document.querySelector(".navbar-favoriteIcon");
+const favoritesFavIcon = document.querySelector(".favoritesMenu-icon");
+const favoritesContainer = document.querySelector(".favorites-container");
+const cleanFavBtn = document.querySelector(".cleanFavorites-btn");
+const msgModal = document.querySelector(".add-modal");
+const cleanFavoritesBtn = document.querySelector(".cleanFavorites-btn");
+
+
+//Traer favoritos del local storage
+let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+//Guardar favoritos en el local storage
+const saveFavoritesOnLocalStorage = () => {
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+}
 
 
 //Renderizar noticias
+            //Checkeo si un articulo está en favoritos
+            const isFavoriteArt = (id) => { 
+                  return favorites.some((art) => {
+                    return art.id === id;
+                });
+            }
+
     const createArtTemplate = (art) => {
         const {id, title, date, img, category, favorite} = art;
 
@@ -24,15 +46,15 @@ const overlay = document.querySelector(".overlay");
                     data-date="${date}"
                     data-img="${img}"
                     data-category="${category}"
-                    data-favorite="${favorite}"   
+                    data-favorite="${favorite}"
                     class="art-favoriteIcon">
-                        <i class="fa-solid fa-star favorite-off hoverScale"></i>
+                        <i class="fa-solid fa-star hoverScale"></i>
                     </button>
                 </div>
 
                 <div class="art-content">
                     <img class="art-img" src="${img}" alt="${title}">
-                    <a href="#"><h2 class="art-title hoverScale">${title}</h2></a>                        
+                    <a href="./Pages/article.html"" target="_blank"><h2 class="art-title hoverScale">${title}</h2></a>                        
                 </div>
             </div>
         `
@@ -60,8 +82,7 @@ const showMorreArts = () => {
     const isInactiveFilterBtn = (btn) => {
         return (
             btn.classList.contains("categories-btn") && !btn.classList.contains("category-active")
-        )
-        
+        )        
     }
 
         const changeBtnState = (selectCategory) => {
@@ -88,7 +109,7 @@ const showMorreArts = () => {
         showMoreBtn.classList.add("hidden");
     }
 
-    renderFilterCategory = () => {
+    renderFilterCategory = (category) => {
         const filteredArts = artsData.filter((art) => {
             return art.category === appState.activeFilter;
         });
@@ -105,7 +126,7 @@ const aplyFilter = ({ target }) => {
 
     newsSection.innerHTML = "";
     if (appState.activeFilter) {
-        renderFilterCategory();
+        renderFilterCategory(target.dataset.category);
         currentIndex = 0;
         return;
     }
@@ -158,17 +179,180 @@ const closeNavMenuOnClick = (e) => {
     }
 }
 
+//FAVORITOS
+
+//Renderizar favoritos
+    const favoritesTemplate = (favoriteArticle) => {
+        const {id, img, title, date, category, favorite} = favoriteArticle;
+
+        return `
+            <div class="favoriteArt">
+                <img src="${img}" alt=${title} class="favoriteArt-img">
+
+                <a class="favoriteArt-info hoverScale" href="#">
+                    <h3 class="favoriteArt-title">${title}</h3>
+                    <p class="favoriteArt-date">${date}</p>
+                </a>
+            
+                <button 
+                    data-id="${id}"
+                    data-title="${title}"
+                    data-date="${date}"
+                    data-img="${img}"
+                    data-category="${category}"
+                    data-favorite="${favorite}"  
+                    class="removeBtn hoverScale">
+                        <i class="fas fa-trash trash-icon"></i>
+                </button>
+            </div>
+        `
+    }
+
+const renderFavorites = () => {
+    if (!favorites.length) {
+        favoritesContainer.innerHTML = `
+            <div class="emptyFavorites-msg">No tienes artículos favoritos</div>
+        `;
+        headerFavIcon.classList.add("favorite-empty");
+        favoritesFavIcon.classList.add("favorite-empty");
+        cleanFavBtn.classList.add("hidden");
+        return;
+    }
+    headerFavIcon.classList.remove("favorite-empty");
+    favoritesFavIcon.classList.remove("favorite-empty");
+
+    headerFavIcon.classList.add("favorite-active");
+    favoritesFavIcon.classList.add("favorite-active");
+
+    cleanFavBtn.classList.remove("hidden");
+
+    favoritesContainer.innerHTML = favorites.map(favoritesTemplate).join("");
+}
+
+//Agregar y quitar artículo favorito
+    clickOnFavBtn = (target) => {
+        return target.classList.contains("art-favoriteIcon") 
+        || target.parentNode.classList.contains("art-favoriteIcon");
+    }
+
+    const createArtData = (art) => {
+        const {id, title, date, img, category, favorite} = art;
+        return {id, title, date, img, category, favorite};
+    }
+
+    const  removeFavoriteArt = (art) => {
+        
+        favorites = favorites.filter((item) => {
+            return item.id !== art.id;
+        });
+
+        updateFavoritesState();
+    }
+
+    const createFavoriteArt = (art) => {
+        favorites = [
+            ...favorites,
+            {
+               ...art,
+            }
+        ];
+
+        updateFavoritesState();
+    }
+
+    const showMsgModal = (msg) => {
+        msgModal.classList.add("active-modal");
+        msgModal.textContent = msg;
+        setTimeout(()=>{
+            msgModal.classList.remove("active-modal");
+        }, 2000);
+    }
+
+    const updateFavoritesState = () => {
+        saveFavoritesOnLocalStorage();
+        renderFavorites();
+    }
+
+const setFavArt = ({target}) => {
+    if (!clickOnFavBtn(target)) {
+        return;
+    }
+    //Aseguro que el target sea el boton y no el icono
+    if (target.classList.contains("fa-star")) {
+        target = target.parentNode;
+    }
+
+    const article = createArtData(target.dataset);
+   
+
+    if (isFavoriteArt(article.id) === false) {
+        createFavoriteArt (article);
+        showMsgModal("Se agregó a tus artículos favoritos");
+    }  else {
+        removeFavoriteArt (article);
+        showMsgModal("Se quitó de tus artículos favoritos"); 
+    } 
+}
+
+    clickOnTrashBtn = (target) => {
+        return target.classList.contains("removeBtn") 
+        || target.parentNode.classList.contains("removeBtn");
+    }
+const removeFavoriteArtFromList = ({target}) => {
+    if (!clickOnTrashBtn(target)) {
+        return;
+    }
+
+    if (target.classList.contains("trash-icon")) {
+        target = target.parentNode;
+    }
+
+    const article = createArtData(target.dataset);
+    removeFavoriteArt(article);
+
+    updateFavoritesState();
+}
+
+    const isCleanFavoritesBtn = (target) => {
+       return target.classList.contains("cleanFavorites-btn");
+    } 
+
+const cleanFavorites = ({target}) => {
+    if (isCleanFavoritesBtn(target)){
+        favorites = [];
+        updateFavoritesState();
+    }
+}
+
+//Abrir noticia en nueva pestaña
+    const getArtID = (target) => {
+        return target.parentNode.parentNode.parentNode.firstElementChild.lastElementChild.dataset.id;
+    }
+
+    const saveOpenArtIDOnLocalStorage = (data) => {
+        localStorage.setItem("openArtID", JSON.stringify(data));
+    }
+
+const openArtID = ({target}) => {
+    saveOpenArtIDOnLocalStorage(getArtID(target));
+}
 
 //---------------------------Init--------------------------------
 const init  = () => {
-    renderNews(appState.articles[appState.currentIndex]);
+    document.addEventListener("DOMContentLoaded", renderNews(appState.articles[appState.currentIndex]));
     showMoreBtn.addEventListener("click", showMorreArts);
     categoriesBox.addEventListener("click", aplyFilter);
     headerFavoritesBtn.addEventListener("click", toggleFavMenu);
     hamburgerBtn.addEventListener("click", toggleNavMenu);
     window.addEventListener("scroll", closeMenuOnScroll);
     overlay.addEventListener("click", closeMenuOnClick);
-    navMenu.addEventListener(("click", closeNavMenuOnClick));
+    navMenu.addEventListener("click", closeNavMenuOnClick);
+    document.addEventListener("DOMContentLoad", renderFavorites);
+    newsSection.addEventListener("click", setFavArt);
+    newsSection.addEventListener("click", openArtID);
+    favoritesContainer.addEventListener("click", removeFavoriteArtFromList);
+    favoritesContainer.parentNode.addEventListener("click", cleanFavorites);
 };
 
 init ();
+
