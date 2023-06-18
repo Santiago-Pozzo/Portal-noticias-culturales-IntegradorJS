@@ -824,10 +824,10 @@
 
   /*--------------Página de Artículo---------------*/
     .articleSection {
-      top: 60px;
+      top: 120px;
       width: 100%;
       background: var(--timberwolf);
-      padding: 20px;
+      padding: 50px 20px;
       gap: 10px;
       display: flex;
       flex-direction: column;
@@ -866,6 +866,14 @@
       align-items: center;
       padding: 5px;
       gap: 8px;
+    }
+    
+    .artPage-favoriteIcon {
+      cursor: default;
+    }
+
+    .artPage-favoriteIcon:hover {
+      transform: scale(1);
     }
 
     .artPage-autorImg {

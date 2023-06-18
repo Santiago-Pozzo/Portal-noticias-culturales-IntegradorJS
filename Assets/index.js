@@ -15,6 +15,7 @@ const msgModal = document.querySelector(".add-modal");
 const cleanFavoritesBtn = document.querySelector(".cleanFavorites-btn");
 
 
+
 //Traer favoritos del local storage
 let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 
@@ -25,28 +26,31 @@ const saveFavoritesOnLocalStorage = () => {
 
 
 
-//Renderizar noticias
-            //Checkeo si un articulo está en favoritos
-            const isFavoriteArt = (id) => {
-                  return favorites.some((art) => {
-                     return art.id == id;
-                  });
-            }
+//Renderizar noticias---------------------------------------------
+        //Checkeo si un articulo está en favoritos
+        const isFavoriteArt = (id) => {
+            return favorites.some((art) => {
+                return art.id == id;
+            });
+        }
 
-            const favoriteClassName = (isFav) => {
-                if (isFav) {
-                    return "favorite-active";
-                } else {
-                    return "favorite-empty";
-                }
+        //Asigno nombre de clase si es o no favorito
+        const favoriteClassName = (isFav) => {
+            if (isFav) {
+              return "favorite-active";
+            } else {
+              return "favorite-empty";
             }
+        }
+
+
     const createArtTemplate = (art) => {
         const {id, title, date, img, category, favorite} = art;
         
         let className = favoriteClassName(isFavoriteArt(id));
 
         return `
-            <div class="art-box">
+            <div class="art-box" id="${id}">
                 <div class="art-info">
                     <h3 class="art-category">${category}</h3>
                     <h3 class="art-date">${date}</h3>
@@ -58,7 +62,7 @@ const saveFavoritesOnLocalStorage = () => {
                     data-category="${category}"
                     data-favorite="${isFavoriteArt(id)}"
                     class="art-favoriteIcon">
-                        <i class="fa-solid fa-star ${className} hoverScale"></i>
+                        <i class="fa-solid fa-star ${className} art-favoriteIconScale hoverscale"></i>
                     </button>
                 </div>
 
@@ -70,12 +74,11 @@ const saveFavoritesOnLocalStorage = () => {
         `
     }
 
-
 const renderNews = (artList) => {
     newsSection.innerHTML += artList.map(createArtTemplate).join("");
 }
 
-//Mostrar más articulos
+//Mostrar más articulos----------------------------------------
     const isLastIndex = () => {
         return appState.currentIndex === appState.artsLimit - 1;
     }
@@ -89,23 +92,23 @@ const showMorreArts = () => {
     }
 }
 
-//Filtrar noticias por categoria
+//Filtrar noticias por categoria-------------------------------
     const isInactiveFilterBtn = (btn) => {
         return (
             btn.classList.contains("categories-btn") && !btn.classList.contains("category-active")
         )
     }
 
-        const changeBtnState = (selectCategory) => {
-             const categories = [... categoriesBtnsAll];
-             categories.forEach((categoryBtn) => {
-                if (categoryBtn.dataset.category !== selectCategory) {
-                    categoryBtn.classList.remove("category-active");
-                    return;
-                }
-                categoryBtn.classList.add("category-active")
-             })
-        }
+    const changeBtnState = (selectCategory) => {
+        const categories = [... categoriesBtnsAll];
+        categories.forEach((categoryBtn) => {
+           if (categoryBtn.dataset.category !== selectCategory) {
+               categoryBtn.classList.remove("category-active");
+               return;
+           }
+           categoryBtn.classList.add("category-active")
+        })
+    }
 
     const changesFilterState = (btn) => {
         appState.activeFilter = btn.dataset.category;
@@ -142,10 +145,12 @@ const aplyFilter = ({ target }) => {
         return;
     }
 
+    appState.currentIndex = 0;
     renderNews(appState.articles[0]);
 }
 
-//Abrir y cerrar menú favoritos
+//MENUES
+//Abrir y cerrar menú favoritos--------------------------------
 const toggleFavMenu = () => {
     favoritesMenu.classList.toggle("favorites-open");
     if (navMenu.classList.contains("navbar-open")) {
@@ -155,7 +160,7 @@ const toggleFavMenu = () => {
     overlay.classList.toggle("hidden");
 }
 
-//Abrir y cerrar menú hamburguesa
+//Abrir y cerrar menú hamburguesa------------------------------
 const toggleNavMenu = () => {
     navMenu.classList.toggle("navbar-open");
     if (favoritesMenu.classList.contains("favorites-open")) {
@@ -165,7 +170,7 @@ const toggleNavMenu = () => {
     overlay.classList.toggle("hidden");
 }
 
-//Cerrar menúes al scrollear
+//Cerrar menúes al scrollear-----------------------------------
 const closeMenuOnScroll = () => {
     if (navMenu.classList.contains("navbar-open")
      || favoritesMenu.classList.contains("favorites-open")) {
@@ -175,14 +180,14 @@ const closeMenuOnScroll = () => {
     }
 }
 
-//Cerrar menúes al clickear en el overlay
+//Cerrar menúes al clickear en el overlay----------------------
 const closeMenuOnClick = () => {
     favoritesMenu.classList.remove("favorites-open");
     navMenu.classList.remove("navbar-open");
     overlay.classList.add("hidden");
 }
 
-//Cerrar nav menú al clickear una opción
+//Cerrar nav menú al clickear una opción-----------------------
 const closeNavMenuOnClick = (e) => {
     if (e.target.classList.contains("navbar-link")){
         navMenu.classList.remove("navbar-open");
@@ -191,16 +196,15 @@ const closeNavMenuOnClick = (e) => {
 }
 
 //FAVORITOS
-
-//Renderizar favoritos
+//Renderizar favoritos------------------------------------------
     const favoritesTemplate = (favoriteArticle) => {
         const {id, img, title, date, category, favorite} = favoriteArticle;
 
         return `
-            <div class="favoriteArt">
+            <div class="favoriteArt" id="${id}">
                 <img src="${img}" alt=${title} class="favoriteArt-img">
 
-                <a class="favoriteArt-info hoverScale" href="#">
+                <a class="favoriteArt-info hoverScale" href="./Pages/article.html"" target="_blank">
                     <h3 class="favoriteArt-title">${title}</h3>
                     <p class="favoriteArt-date">${date}</p>
                 </a>
@@ -219,29 +223,46 @@ const closeNavMenuOnClick = (e) => {
         `
     }
 
+    const changeToActiveStar = (icon) => {
+        icon.classList.remove("favorite-empty");
+        icon.classList.add("favorite-active");
+    } 
+
+    const changeToEmptyStar = (icon) => {
+        icon.classList.remove("favorite-active");
+        icon.classList.add("favorite-empty");
+    }
+
+    const changeToEmptyAllStars = () => {
+        //allArtFavoriteIcon.innerHTML = `"<i class="fa-solid fa-star hoverScale"></i>"`;
+        const allArtFavoriteIcon = document.querySelectorAll(".art-favoriteIcon");
+        for (let i = 0; i < allArtFavoriteIcon.length; i++) {
+            changeToEmptyStar(allArtFavoriteIcon[i].firstElementChild);
+        }
+
+        changeToEmptyStar(headerFavIcon);
+        changeToEmptyStar(favoritesFavIcon);    
+    }
+
 const renderFavorites = () => {
 
     if (!favorites.length) {
         favoritesContainer.innerHTML = `
             <div class="emptyFavorites-msg">No tienes artículos favoritos</div>
         `;
-        headerFavIcon.classList.add("favorite-empty");
-        favoritesFavIcon.classList.add("favorite-empty");
+       
         cleanFavBtn.classList.add("hidden");
         return;
     }
-    headerFavIcon.classList.remove("favorite-empty");
-    favoritesFavIcon.classList.remove("favorite-empty");
-
-    headerFavIcon.classList.add("favorite-active");
-    favoritesFavIcon.classList.add("favorite-active");
+    changeToActiveStar(headerFavIcon);
+    changeToActiveStar(favoritesFavIcon);
 
     cleanFavBtn.classList.remove("hidden");
 
     favoritesContainer.innerHTML = favorites.map(favoritesTemplate).join("");
 }
 
-//Agregar y quitar artículo favorito
+//Agregar y quitar artículo favorito desde la secion de noticias-------------
     clickOnFavBtn = (target) => {
         return target.classList.contains("art-favoriteIcon")
         || target.parentNode.classList.contains("art-favoriteIcon");
@@ -283,6 +304,9 @@ const renderFavorites = () => {
     const updateFavoritesState = () => {
         saveFavoritesOnLocalStorage();
         renderFavorites();
+        if (!favorites.length) {
+            changeToEmptyAllStars();
+        }
     }
 
 const setFavArt = ({target}) => {
@@ -295,24 +319,20 @@ const setFavArt = ({target}) => {
     }
 
     icon = target.firstElementChild;
-
     const article = createArtData(target.dataset);
 
     if (isFavoriteArt(article.id) === false) {
         createFavoriteArt (article);
         showMsgModal("Se agregó a tus artículos favoritos");
-        icon.classList.remove("favorite-empty")
-        icon.classList.add("favorite-active")
-
+        changeToActiveStar(icon);
     }  else {
         removeFavoriteArt (article);
         showMsgModal("Se quitó de tus artículos favoritos");
-        target.firstElementChild.classList.remove("favorite-active")
-        icon.classList.remove("favorite-active")
-        icon.classList.add("favorite-empty")
+        changeToEmptyStar(icon);
     }
 }
 
+//Quitar articulo desde el menu favoritos-----------------------------
     clickOnTrashBtn = (target) => {
         return target.classList.contains("removeBtn")
         || target.parentNode.classList.contains("removeBtn");
@@ -329,9 +349,14 @@ const removeFavoriteArtFromList = ({target}) => {
     const article = createArtData(target.dataset);
     removeFavoriteArt(article);
 
+    const deletedFavArt = document.getElementById(article.id);
+    const favIconFromDeletedArt = deletedFavArt.firstElementChild.lastElementChild.firstElementChild;
+    changeToEmptyStar(favIconFromDeletedArt);
     updateFavoritesState();
+
 }
 
+//Borrar todos los favoritos desde el menu favoritos-------------------
     const isCleanFavoritesBtn = (target) => {
        return target.classList.contains("cleanFavorites-btn");
     }
@@ -339,11 +364,12 @@ const removeFavoriteArtFromList = ({target}) => {
 const cleanFavorites = ({target}) => {
     if (isCleanFavoritesBtn(target)){
         favorites = [];
+        changeToEmptyAllStars(); 
         updateFavoritesState();
     }
 }
 
-//Abrir noticia en nueva pestaña
+//Abrir noticia en nueva pestaña---------------------------------------
     const getArtID = (target) => {
         return target.parentNode.parentNode.parentNode.firstElementChild.lastElementChild.dataset.id;
     }
@@ -374,3 +400,4 @@ const init  = () => {
 };
 
 init ();
+
