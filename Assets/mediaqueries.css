@@ -2,8 +2,20 @@
 /* PANTALLAS MUY PEQUEÑAS */
 /* ------------------------------------------------------------------------------------------- */
 @media (max-width: 300px) {
+  .hero-title {
+    font-size: 20px;
+  }
+  .favorites-title {
+    font-size: 16px;
+  }
   .art-title {
     font-size: 13px;
+  }
+  .benefitCard {
+    width: 65px;
+  }
+  .contact-span {
+    font-size: 14px;
   }
 }
 
@@ -80,6 +92,7 @@
     padding: 8px;
     gap: 6px;
     margin-bottom: 1rem;
+    max-height: 63%;
   }
 
   .favoriteArt {
@@ -98,7 +111,7 @@
   }
 
   .favoriteArt-title {
-    font-size: 21px;
+    font-size: 17px;
   }
 
   .favoriteArt-date {
@@ -117,7 +130,7 @@
     border-radius: 8px;
     padding: 4px 50px;
     font-weight: 600;
-    font-size: 18px;
+    font-size: 15px;
   }
 
 /* ------------------------- Main ---------------------------*/
@@ -512,10 +525,16 @@
 .main {
   margin-top: 70px;
 }
+
   /* Sticky usuario */
   .sticky {
     top: 105px;
   } 
+
+  /* FAvoritos */
+  .favoritesMenu {
+    padding-bottom: 25px;
+  }
 
   /* Hero */
    .hero-info {
@@ -575,6 +594,10 @@
    .news-section {
     max-width: 95%;
   } 
+
+  .art-favoriteIcon i {
+    font-size: 14px;
+  }
 }
 
 /* ----------------------------------------------------------*/

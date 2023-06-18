@@ -170,11 +170,9 @@ const toggleNavMenu = () => {
     overlay.classList.toggle("hidden");
 }
 
-//Cerrar menúes al scrollear-----------------------------------
+//Cerrar nav menu al scrollear-----------------------------------
 const closeMenuOnScroll = () => {
-    if (navMenu.classList.contains("navbar-open")
-     || favoritesMenu.classList.contains("favorites-open")) {
-        favoritesMenu.classList.remove("favorites-open");
+    if (navMenu.classList.contains("navbar-open")) {
         navMenu.classList.remove("navbar-open");
         overlay.classList.add("hidden");
     }
@@ -202,12 +200,14 @@ const closeNavMenuOnClick = (e) => {
 
         return `
             <div class="favoriteArt" id="${id}">
-                <img src="${img}" alt=${title} class="favoriteArt-img">
+                <div class="favoriteArt-content">
+                    <img src="${img}" alt=${title} class="favoriteArt-img">
 
-                <a class="favoriteArt-info hoverScale" href="./Pages/article.html"" target="_blank">
-                    <h3 class="favoriteArt-title">${title}</h3>
-                    <p class="favoriteArt-date">${date}</p>
-                </a>
+                    <a class="favoriteArt-info hoverScale" href="./Pages/article.html"" target="_blank">
+                        <h3 class="favoriteArt-title">${title}</h3>
+                        <p class="favoriteArt-date">${date}</p>
+                    </a>            
+                </div>
 
                 <button
                     data-id="${id}"
