@@ -140,7 +140,7 @@
 
   .favoritesMenu-icon {
     font-size: 20px;
-    color: var(--old-gold);
+    color: var(--timberwolf);
   }
 
   .favorites-container {
@@ -784,7 +784,7 @@
       gap: 10px;
     }
 
-    .login-title {
+    .users-title {
       width: 100%;
       font-family: prompt;
       font-weight: 600;
@@ -792,7 +792,7 @@
       color: var(--eerie-black);
     }
 
-    .form {
+      .form {
       width: 80%;
       display: flex;
       flex-direction: column;
@@ -824,6 +824,8 @@
       border: 2px solid;
       border-color: var(--myrtle-green);
       border-radius: 8px;
+      padding: 5px;
+      outline: none;
     }
 
     .imput-alert {
@@ -840,6 +842,9 @@
     }
 
     .formSection-btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       background: var(--myrtle-green);
       width: 100px;
       font-family: rambla;
@@ -848,11 +853,28 @@
       color: var(--onix);
     }
 
-    .formSection-regBtn {
+    .formSection-clearBtn {
       font-size: 12px;
       background: var(--timberwolf);
       border: none;
     }
+
+    .redirectToLogin{
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
+
+    .login-msg{
+      font-family: rambla;
+      font-weight: 400;
+      font-size: 15px;
+      color: var(--eerie-black);
+    }
+
 
   /*--------------Página de Artículo---------------*/
     .articleSection {

@@ -231,7 +231,7 @@
         color: var(--myrtle-green);
     }
 
-    .formSection-regBtn:hover {
+    .formSection-clearBtn:hover {
         background: var(--timberwolf);
         border: 1px solid;
         border-color: var(--onix);

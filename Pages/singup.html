@@ -24,34 +24,39 @@
     </header>
 
     <main class="main">
-        <section class="formSection login">
-            <h2 class="login-title">Ingresá tus datos</h2>
-            <form class="form login-form" action="">
+        <section class="formSection singup">
+            <h2 class="singup-title users-title">Ingresá tus datos</h2>
+            <form class="form singup-form" action="">
                 <div class="form-item">
                     <label class="form-label" for="name-input">Nombres: </label>
                     <input class="form-input" id="name-input" type="text">
-                    <p class="form-alertMsg hidden">Este es un mensaje de alerta</p>
+                    <p class="form-alertMsg hidden"></p>
                 </div>
 
                 <div class="form-item">
-                    <label class="form-label" for="apellido">Apellidos: </label>
-                    <input class="form-input" id="apellido" type="text">
-                    <p class="form-alertMsg hidden">Este es un mensaje de alerta</p>
+                    <label class="form-label" for="lastName-input">Apellidos: </label>
+                    <input class="form-input" id="lastName-input" type="text">
+                    <p class="form-alertMsg hidden"></p>
                 </div>
 
                 <div class="form-item">
                     <label class="form-label" for="mail-input">Mail: </label>
                     <input class="form-input" id="mail-input" type="email">
-                    <p class="form-alertMsg hidden">Este es un mensaje de alerta</p>
+                    <p class="form-alertMsg hidden"></p>
                 </div>
 
                 <div class="form-item">
                     <label class="form-label" for="pass-input">Contraseña: </label>
-                    <input class="form-input imput-alert" id="pass-input" type="password">
-                    <p class="form-alertMsg">Este es un mensaje de alerta</p>
+                    <input class="form-input" id="pass-input" type="password">
+                    <p class="form-alertMsg hidden"></p>
                 </div>
 
                 <button class="btn formSection-btn hoverScale">Registrarme</button>
+
+                <div class="redirectToLogin">
+                    <h3 class="login-msg"> ¿Ya tenés cuenta? </h3>
+                    <button class="formSection-clearBtn login-btn btn"><a href="./login.html">Ingresá</a></button>
+                </div>
             </form>
         </section>
     </main>
@@ -64,7 +69,6 @@
 
         <p class="footer-copyrigth">© Copyright 2023 - Canal Cultural Córdoba</p>
     </footer>
-    <script src="../Assets/data.js"></script>
-    <script src="../Assets/index.js"></script    
-</body>
+    <script src="./singup.js"></script>
+ </body>
 </html>

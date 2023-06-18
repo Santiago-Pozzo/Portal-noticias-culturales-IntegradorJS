@@ -386,7 +386,7 @@
     gap: 18px;
   }
 
-  .login-title {
+  .users-title {
     font-size: 30px;
   }
 
@@ -424,8 +424,12 @@
     font-size: 16px;
   }
 
-  .formSection-regBtn {
+  .formSection-clearBtn {
     font-size: 16px;
+  }
+
+  .login-msg{
+    font-size: 20px;
   }
 
   /*--------------Página de Artículo---------------*/
@@ -548,12 +552,12 @@
    }
 
    .btn {
-    padding: 7px 30px;
+    padding: 5px 25px;
     border-radius: 12px;
    }
 
    .btn a {
-    font-size: 25px;
+    font-size: 22px;
    }
 
   /* Beneficios */

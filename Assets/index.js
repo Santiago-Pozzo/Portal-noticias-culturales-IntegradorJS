@@ -22,7 +22,7 @@ let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 //Guardar favoritos en el local storage
 const saveFavoritesOnLocalStorage = () => {
     localStorage.setItem("favorites", JSON.stringify(favorites));
-}
+};
 
 
 
@@ -32,7 +32,7 @@ const saveFavoritesOnLocalStorage = () => {
             return favorites.some((art) => {
                 return art.id == id;
             });
-        }
+        };
 
         //Asigno nombre de clase si es o no favorito
         const favoriteClassName = (isFav) => {
@@ -41,7 +41,7 @@ const saveFavoritesOnLocalStorage = () => {
             } else {
               return "favorite-empty";
             }
-        }
+        };
 
 
     const createArtTemplate = (art) => {
@@ -72,16 +72,16 @@ const saveFavoritesOnLocalStorage = () => {
                 </div>
             </div>
         `
-    }
+    };
 
 const renderNews = (artList) => {
     newsSection.innerHTML += artList.map(createArtTemplate).join("");
-}
+};
 
 //Mostrar más articulos----------------------------------------
     const isLastIndex = () => {
         return appState.currentIndex === appState.artsLimit - 1;
-    }
+    };
 
 const showMorreArts = () => {
     appState.currentIndex += 1;
@@ -89,15 +89,15 @@ const showMorreArts = () => {
     renderNews(articles[currentIndex]);
     if (isLastIndex()) {
         showMoreBtn.classList.add("hidden");
-    }
-}
+    };
+};
 
 //Filtrar noticias por categoria-------------------------------
     const isInactiveFilterBtn = (btn) => {
         return (
             btn.classList.contains("categories-btn") && !btn.classList.contains("category-active")
         )
-    }
+    };
 
     const changeBtnState = (selectCategory) => {
         const categories = [... categoriesBtnsAll];
@@ -105,35 +105,35 @@ const showMorreArts = () => {
            if (categoryBtn.dataset.category !== selectCategory) {
                categoryBtn.classList.remove("category-active");
                return;
-           }
+           };
            categoryBtn.classList.add("category-active")
         })
-    }
+    };
 
     const changesFilterState = (btn) => {
         appState.activeFilter = btn.dataset.category;
         changeBtnState(appState.activeFilter);
-    }
+    };
 
     const showMoreBtnVisivility = () => {
         if (!appState.activeFilter) {
             showMoreBtn.classList.remove("hidden");
             return;
-        }
+        };
         showMoreBtn.classList.add("hidden");
-    }
+    };
 
     renderFilterCategory = (category) => {
         const filteredArts = artsData.filter((art) => {
             return art.category === appState.activeFilter;
         });
         renderNews(filteredArts);
-    }
+    };
 
 const aplyFilter = ({ target }) => {
     if (!isInactiveFilterBtn(target)){
         return
-    }
+    };
 
     changesFilterState(target);
     showMoreBtnVisivility ();
@@ -143,11 +143,11 @@ const aplyFilter = ({ target }) => {
         renderFilterCategory(target.dataset.category);
         currentIndex = 0;
         return;
-    }
+    };
 
     appState.currentIndex = 0;
     renderNews(appState.articles[0]);
-}
+};
 
 //MENUES
 //Abrir y cerrar menú favoritos--------------------------------
@@ -156,9 +156,9 @@ const toggleFavMenu = () => {
     if (navMenu.classList.contains("navbar-open")) {
         navMenu.classList.remove("navbar-open");
         return;
-    }
+    };
     overlay.classList.toggle("hidden");
-}
+};
 
 //Abrir y cerrar menú hamburguesa------------------------------
 const toggleNavMenu = () => {
@@ -166,32 +166,32 @@ const toggleNavMenu = () => {
     if (favoritesMenu.classList.contains("favorites-open")) {
         favoritesMenu.classList.remove("favorites-open");
         return;
-    }
+    };
     overlay.classList.toggle("hidden");
-}
+};
 
 //Cerrar nav menu al scrollear-----------------------------------
 const closeMenuOnScroll = () => {
     if (navMenu.classList.contains("navbar-open")) {
         navMenu.classList.remove("navbar-open");
         overlay.classList.add("hidden");
-    }
-}
+    };
+};
 
 //Cerrar menúes al clickear en el overlay----------------------
 const closeMenuOnClick = () => {
     favoritesMenu.classList.remove("favorites-open");
     navMenu.classList.remove("navbar-open");
     overlay.classList.add("hidden");
-}
+};
 
 //Cerrar nav menú al clickear una opción-----------------------
 const closeNavMenuOnClick = (e) => {
     if (e.target.classList.contains("navbar-link")){
         navMenu.classList.remove("navbar-open");
         overlay.classList.add("hidden");
-    }
-}
+    };
+};
 
 //FAVORITOS
 //Renderizar favoritos------------------------------------------
@@ -221,28 +221,28 @@ const closeNavMenuOnClick = (e) => {
                 </button>
             </div>
         `
-    }
+    };
 
     const changeToActiveStar = (icon) => {
         icon.classList.remove("favorite-empty");
         icon.classList.add("favorite-active");
-    } 
+    };
 
     const changeToEmptyStar = (icon) => {
         icon.classList.remove("favorite-active");
         icon.classList.add("favorite-empty");
-    }
+    };
 
     const changeToEmptyAllStars = () => {
         //allArtFavoriteIcon.innerHTML = `"<i class="fa-solid fa-star hoverScale"></i>"`;
         const allArtFavoriteIcon = document.querySelectorAll(".art-favoriteIcon");
         for (let i = 0; i < allArtFavoriteIcon.length; i++) {
             changeToEmptyStar(allArtFavoriteIcon[i].firstElementChild);
-        }
+        };
 
         changeToEmptyStar(headerFavIcon);
         changeToEmptyStar(favoritesFavIcon);    
-    }
+    };
 
 const renderFavorites = () => {
 
@@ -253,25 +253,25 @@ const renderFavorites = () => {
        
         cleanFavBtn.classList.add("hidden");
         return;
-    }
+    };
     changeToActiveStar(headerFavIcon);
     changeToActiveStar(favoritesFavIcon);
 
     cleanFavBtn.classList.remove("hidden");
 
     favoritesContainer.innerHTML = favorites.map(favoritesTemplate).join("");
-}
+};
 
 //Agregar y quitar artículo favorito desde la secion de noticias-------------
     clickOnFavBtn = (target) => {
         return target.classList.contains("art-favoriteIcon")
         || target.parentNode.classList.contains("art-favoriteIcon");
-    }
+    };
 
     const createArtData = (art) => {
         const {id, title, date, img, category, favorite} = art;
         return {id, title, date, img, category, favorite};
-    }
+    };
 
     const  removeFavoriteArt = (art) => {
 
@@ -280,7 +280,7 @@ const renderFavorites = () => {
         });
 
         updateFavoritesState();
-    }
+    };
 
     const createFavoriteArt = (art) => {
         favorites = [
@@ -291,7 +291,7 @@ const renderFavorites = () => {
         ];
 
         updateFavoritesState();
-    }
+    };
 
     const showMsgModal = (msg) => {
         msgModal.classList.add("active-modal");
@@ -299,24 +299,24 @@ const renderFavorites = () => {
         setTimeout(()=>{
             msgModal.classList.remove("active-modal");
         }, 2000);
-    }
+    };
 
     const updateFavoritesState = () => {
         saveFavoritesOnLocalStorage();
         renderFavorites();
         if (!favorites.length) {
             changeToEmptyAllStars();
-        }
-    }
+        };
+    };
 
 const setFavArt = ({target}) => {
     if (!clickOnFavBtn(target)) {
         return;
-    }
+    };
     //Aseguro que el target sea el boton y no el icono
     if (target.classList.contains("fa-star")) {
         target = target.parentNode;
-    }
+    };
 
     icon = target.firstElementChild;
     const article = createArtData(target.dataset);
@@ -329,22 +329,22 @@ const setFavArt = ({target}) => {
         removeFavoriteArt (article);
         showMsgModal("Se quitó de tus artículos favoritos");
         changeToEmptyStar(icon);
-    }
-}
+    };
+};
 
 //Quitar articulo desde el menu favoritos-----------------------------
     clickOnTrashBtn = (target) => {
         return target.classList.contains("removeBtn")
         || target.parentNode.classList.contains("removeBtn");
-    }
+    };
 const removeFavoriteArtFromList = ({target}) => {
     if (!clickOnTrashBtn(target)) {
         return;
-    }
+    };
 
     if (target.classList.contains("trash-icon")) {
         target = target.parentNode;
-    }
+    };
 
     const article = createArtData(target.dataset);
     removeFavoriteArt(article);
@@ -353,34 +353,33 @@ const removeFavoriteArtFromList = ({target}) => {
     const favIconFromDeletedArt = deletedFavArt.firstElementChild.lastElementChild.firstElementChild;
     changeToEmptyStar(favIconFromDeletedArt);
     updateFavoritesState();
-
-}
+};
 
 //Borrar todos los favoritos desde el menu favoritos-------------------
     const isCleanFavoritesBtn = (target) => {
        return target.classList.contains("cleanFavorites-btn");
-    }
+    };
 
 const cleanFavorites = ({target}) => {
-    if (isCleanFavoritesBtn(target)){
+    if (isCleanFavoritesBtn(target) && window.confirm("¿Quieres borrar tus artículos favoritos?")){
         favorites = [];
         changeToEmptyAllStars(); 
         updateFavoritesState();
-    }
-}
+    };
+};
 
 //Abrir noticia en nueva pestaña---------------------------------------
     const getArtID = (target) => {
         return target.parentNode.parentNode.parentNode.firstElementChild.lastElementChild.dataset.id;
-    }
+    };
 
     const saveOpenArtIDOnLocalStorage = (data) => {
         localStorage.setItem("openArtID", JSON.stringify(data));
-    }
+    };
 
 const openArtID = ({target}) => {
     saveOpenArtIDOnLocalStorage(getArtID(target));
-}
+};
 
 //---------------------------Init--------------------------------
 const init  = () => {
