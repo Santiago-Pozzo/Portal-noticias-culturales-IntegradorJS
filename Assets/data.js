@@ -95,6 +95,7 @@ const artsData = [
         favorite: false,
     },
 
+   
     {
         id: 9,
         title: "Así es el MAC: un recorrido visual por la diversidad de obras con foco en la ciudad",
@@ -105,8 +106,212 @@ const artsData = [
         img: "./Assets/Images/news images/9.webp",
         category: "visuales",
         favorite: false,
-    },    
-]
+    },
+    
+    {
+        id: 10,
+        title: "Título del artículo",
+        crest: "Copete del artículo.",
+        autor: "Leonel Andres Messi",
+        date: "20/06/2023",
+        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        img: "./Assets/Images/news images/9.webp",
+        category: "visuales",
+        favorite: false,
+    }, 
+    
+    {
+        id: 11,
+        title: "Título del artículo",
+        crest: "Copete del artículo.",
+        autor: "Leonel Andres Messi",
+        date: "20/06/2023",
+        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        img: "./Assets/Images/news images/25.webp",
+        category: "teatro",
+        favorite: false,
+    }, 
+
+    {
+        id: 12,
+        title: "Título del artículo",
+        crest: "Copete del artículo.",
+        autor: "Leonel Andres Messi",
+        date: "20/06/2023",
+        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        img: "./Assets/Images/news images/11.png",
+        category: "visuales",
+        favorite: false,
+    }, 
+
+    {
+        id: 13,
+        title: "Título del artículo",
+        crest: "Copete del artículo.",
+        autor: "Leonel Andres Messi",
+        date: "20/06/2023",
+        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        img: "./Assets/Images/news images/13.jpg",
+        category: "cine",
+        favorite: false,
+    }, 
+
+    {
+        id: 14,
+        title: "Título del artículo",
+        crest: "Copete del artículo.",
+        autor: "Leonel Andres Messi",
+        date: "20/06/2023",
+        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        img: "./Assets/Images/news images/14.jpg",
+        category: "cine",
+        favorite: false,
+    }, 
+
+    {
+        id: 15,
+        title: "Título del artículo",
+        crest: "Copete del artículo.",
+        autor: "Leonel Andres Messi",
+        date: "20/06/2023",
+        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        img: "./Assets/Images/news images/15.jpg",
+        category: "cine",
+        favorite: false,
+    }, 
+
+    {
+        id: 16,
+        title: "Título del artículo",
+        crest: "Copete del artículo.",
+        autor: "Leonel Andres Messi",
+        date: "20/06/2023",
+        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        img: "./Assets/Images/news images/16.jpg",
+        category: "danza",
+        favorite: false,
+    }, 
+
+    {
+        id: 17,
+        title: "Título del artículo",
+        crest: "Copete del artículo.",
+        autor: "Leonel Andres Messi",
+        date: "20/06/2023",
+        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        img: "./Assets/Images/news images/17.jpg",
+        category: "danza",
+        favorite: false,
+    }, 
+
+    {
+        id: 18,
+        title: "Título del artículo",
+        crest: "Copete del artículo.",
+        autor: "Leonel Andres Messi",
+        date: "20/06/2023",
+        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        img: "./Assets/Images/news images/18.jpg",
+        category: "danza",
+        favorite: false,
+    }, 
+
+    {
+        id: 19,
+        title: "Título del artículo",
+        crest: "Copete del artículo.",
+        autor: "Leonel Andres Messi",
+        date: "20/06/2023",
+        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        img: "./Assets/Images/news images/19.jpg",
+        category: "teatro",
+        favorite: false,
+    }, 
+
+    {
+        id: 20,
+        title: "Título del artículo",
+        crest: "Copete del artículo.",
+        autor: "Leonel Andres Messi",
+        date: "20/06/2023",
+        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        img: "./Assets/Images/news images/20.jpg",
+        category: "teatro",
+        favorite: false,
+    },     
+
+    {
+        id: 21,
+        title: "Título del artículo",
+        crest: "Copete del artículo.",
+        autor: "Leonel Andres Messi",
+        date: "20/06/2023",
+        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        img: "./Assets/Images/news images/21.webp",
+        category: "teatro",
+        favorite: false,
+    }, 
+
+    {
+        id: 22,
+        title: "Título del artículo",
+        crest: "Copete del artículo.",
+        autor: "Leonel Andres Messi",
+        date: "20/06/2023",
+        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        img: "./Assets/Images/news images/22.webp",
+        category: "danza",
+        favorite: false,
+    }, 
+
+    {
+        id: 23,
+        title: "Título del artículo",
+        crest: "Copete del artículo.",
+        autor: "Leonel Andres Messi",
+        date: "20/06/2023",
+        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        img: "./Assets/Images/news images/23.jpg",
+        category: "musica",
+        favorite: false,
+    }, 
+
+    {
+        id: 24,
+        title: "Título del artículo",
+        crest: "Copete del artículo.",
+        autor: "Leonel Andres Messi",
+        date: "20/06/2023",
+        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        img: "./Assets/Images/news images/24.jpg",
+        category: "musica",
+        favorite: false,
+    }, 
+
+    {
+        id: 25,
+        title: "Título del artículo",
+        crest: "Copete del artículo.",
+        autor: "Leonel Andres Messi",
+        date: "20/06/2023",
+        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        img: "./Assets/Images/news images/26.webp",
+        category: "musica",
+        favorite: false,
+    }, 
+
+    {
+        id: 26,
+        title: "Título del artículo",
+        crest: "Copete del artículo.",
+        autor: "Leonel Andres Messi",
+        date: "20/06/2023",
+        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        img: "./Assets/Images/news images/27.jpeg",
+        category: "visuales",
+        favorite: false,
+    }, 
+];
 
 
 const divideArtsInParts = (size) => {
@@ -115,12 +320,12 @@ const divideArtsInParts = (size) => {
         artList.push(artsData.slice(i, i + size));
     }
     return artList;
-}
+};
 
 const appState = {
     articles: divideArtsInParts(5),
     currentIndex: 0,
     artsLimit: divideArtsInParts(5).length,
     activeFilter: null,
-}
+};
 

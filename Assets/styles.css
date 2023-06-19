@@ -314,7 +314,7 @@
     padding: 20px;
     gap: 20px;
     border-radius: 2rem;
-    background-image: url(./Images/Quality1.jpg);
+    background-image: url(./Images/piojera\ 1.jpg);
     background-position: center;
     background-size: cover;
    }
@@ -526,6 +526,7 @@
   .art-box {
     display: flex;
     flex-direction: column;
+    width: 100%;
   }
 
   .art-info {
@@ -568,9 +569,6 @@
      cursor: pointer;
   }
 
-   /* .art-favoriteIcon i {
-    color: var(--timberwolf);
-   } */
 
   .art-favoriteIcon i {
       font-size: 80%;

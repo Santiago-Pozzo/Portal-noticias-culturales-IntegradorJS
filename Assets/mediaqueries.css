@@ -30,6 +30,9 @@
   .contact-span {
     font-size: 14px;
   }
+  .art-category {
+    min-width: 50px;
+  }
 }
 
 
