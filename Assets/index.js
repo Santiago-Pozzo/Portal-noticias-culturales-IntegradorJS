@@ -13,8 +13,10 @@ const favoritesContainer = document.querySelector(".favorites-container");
 const cleanFavBtn = document.querySelector(".cleanFavorites-btn");
 const msgModal = document.querySelector(".add-modal");
 const cleanFavoritesBtn = document.querySelector(".cleanFavorites-btn");
+const userSticky = document.querySelector(".userSticky");
 
-
+//Traer usuario activo del session storage
+let activeUser = JSON.parse(sessionStorage.getItem("activeUser")) || {};
 
 //Traer favoritos del local storage
 let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
@@ -157,6 +159,7 @@ const toggleFavMenu = () => {
         navMenu.classList.remove("navbar-open");
         return;
     };
+
     overlay.classList.toggle("hidden");
 };
 
@@ -175,6 +178,7 @@ const closeMenuOnScroll = () => {
     if (navMenu.classList.contains("navbar-open")) {
         navMenu.classList.remove("navbar-open");
         overlay.classList.add("hidden");
+        renderUserSticky();
     };
 };
 
@@ -183,6 +187,7 @@ const closeMenuOnClick = () => {
     favoritesMenu.classList.remove("favorites-open");
     navMenu.classList.remove("navbar-open");
     overlay.classList.add("hidden");
+    renderUserSticky();
 };
 
 //Cerrar nav menú al clickear una opción-----------------------
@@ -381,7 +386,48 @@ const openArtID = ({target}) => {
     saveOpenArtIDOnLocalStorage(getArtID(target));
 };
 
-//---------------------------Init--------------------------------
+//Funciones del sticky con nombre de usuario activo-------------------------
+//Renderizar sticky
+    const isActiveUser = () => {
+        return sessionStorage.getItem("activeUser") !== null;
+    };
+
+    const userStickyTemplate = () => {
+        userSticky.classList.remove("hidden");
+        const userName = document.querySelector(".activeUser");
+        userName.innerHTML = `${activeUser.name} ${activeUser.lastName}`;
+    };
+
+const renderUserSticky = () => {
+    if (isActiveUser()) {
+        console.log("hay un usuario activo vieja");
+        userStickyTemplate();
+        return;
+    };
+    console.log("no hay usuario activo vieja");
+};
+
+//Cerrar sesion
+    const clickOnLogOutBtn = (target) => {
+        return target.classList.contains("logOut-btn") ||  target.classList.contains("logOut-icon");
+    };
+
+const logOut = ({target}) => {
+    if (clickOnLogOutBtn(target) && window.confirm("¿Quieres cerrar sesión?")) {
+        userSticky.classList.add("hidden");
+        activeUser = {};
+        sessionStorage.removeItem("activeUser");
+    };
+};
+
+//Esconder al abrir un menu
+const hideOnOpenMenu = ({target}) => {
+    if (target.classList.contains("label")) {
+        userSticky.classList.add("hidden");
+    } 
+};
+
+//----------------------------------Init--------------------------------------------
 const init  = () => {
     document.addEventListener("DOMContentLoaded", renderNews(appState.articles[appState.currentIndex]));
     showMoreBtn.addEventListener("click", showMorreArts);
@@ -396,6 +442,9 @@ const init  = () => {
     newsSection.addEventListener("click", openArtID);
     favoritesContainer.addEventListener("click", removeFavoriteArtFromList);
     favoritesContainer.parentNode.addEventListener("click", cleanFavorites);
+    document.addEventListener("DOMContentLoaded", renderUserSticky);
+    userSticky.addEventListener("click", logOut);
+    document.addEventListener("click", hideOnOpenMenu);
 };
 
 init ();

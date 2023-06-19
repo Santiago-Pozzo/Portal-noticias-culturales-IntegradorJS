@@ -26,8 +26,8 @@
         <a href="#hero"><img src="./Assets/Images/Logo.png" alt="Logo de Conexión Cultural Córdoba" class="logo"/></a>
 
         <nav class="navbar">
-             <div class="menu-label">
-                <i class="fa-solid fa-bars menu-icon"></i>
+             <div class="menu-label label">
+                <i class="fa-solid fa-bars menu-icon label"></i>
             </div>
 
             <!-- Navegación -->
@@ -53,8 +53,8 @@
                 </li>
             </ul>
 
-            <div class="favorites-label">
-                <i class="fa-solid fa-star navbar-favoriteIcon favorite-empty"></i>
+            <div class="favorites-label label">
+                <i class="fa-solid fa-star navbar-favoriteIcon favorite-empty label"></i>
             </div>
             
             <!-- Menu favoritos -->
@@ -94,7 +94,10 @@
 
     <main class="main">
         <!-- Sticky user -->
-        <div class="sticky hidden">Nombre de usuario</div>
+        <div class="userSticky hidden">
+            <h3 class="activeUser">Nombre de usuario</h3>
+            <button class="logOut-btn hoverScale"><i class="fa-solid fa-right-from-bracket logOut-icon"></i></button>            
+        </div>
 
         <!-- Hero -->
         <section class="hero" id="hero">
