@@ -40,7 +40,7 @@ const succesInput = (input) => {
         const errorMsg = formField.querySelector(".form-alertMsg");
         errorMsg.classList.remove("hidden");
         errorMsg.textContent = msg;        
-    }
+    };
 
 //Validar input de nombre y apellido
     const checkTextImput = (input) => {
@@ -57,12 +57,12 @@ const succesInput = (input) => {
         if (!isBetwen(input, minChar, maxChar)) {
             showError (input, `Este campo debe tener entre ${minChar} y ${maxChar} caracteres.`);
             return;
-        }
+        };
 
         succesInput(input);
         valid = true;
         return valid;
-    }
+    };
 
 const validateNameInput = (e) => {
     checkTextImput(e.target);
@@ -72,7 +72,7 @@ const validateNameInput = (e) => {
         const isRegisteredEMail = (input) => {
             let value = false;
             for (let i = 0; i < users.length; i++) {
-                if (input.value === users[i].email) {
+                if (input.value.trim() === users[i].email) {
                     value = true;
                     return value;
                 };      
