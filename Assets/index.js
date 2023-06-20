@@ -14,6 +14,7 @@ const cleanFavBtn = document.querySelector(".cleanFavorites-btn");
 const msgModal = document.querySelector(".add-modal");
 const cleanFavoritesBtn = document.querySelector(".cleanFavorites-btn");
 const userSticky = document.querySelector(".userSticky");
+const heroRegisterDiv = document.querySelector(".hero-register");
 const alertMsgBox = document.querySelector(".alertMsg-box");
 
 //Traer usuario activo del session storage
@@ -512,6 +513,7 @@ const openArtID = ({target}) => {
 const renderUserSticky = () => {
     if (isActiveUser()) {
         userStickyTemplate();
+        heroRegisterDiv.classList.add("hidden");
         return;
     };
 };
