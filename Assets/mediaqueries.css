@@ -33,6 +33,19 @@
   .art-category {
     min-width: 50px;
   }
+  .alertMsg-box {
+    height: 60vh;
+  }
+  .alertMsg-title {
+    font-size: 18px;
+  }
+
+  .alertMsg-btn {
+    font-size: 14px;
+  }
+  .alertMsg-text {
+    font-size: 14px;
+  }
 }
 
 
@@ -167,7 +180,7 @@
   }
 
   .alertMsg-title {
-    font-size: 32px;
+    font-size: 28px;
   }
   
   .alertMsg-btnBox {
@@ -175,11 +188,11 @@
   }
 
   .alertMsg-text {
-    font-size: 25px;
+    font-size: 20px;
   }
 
   .alertMsg-btn {
-    font-size: 18px;
+    font-size: 16px;
   }
 
    /* Sticky usuario */

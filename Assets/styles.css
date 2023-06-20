@@ -283,13 +283,9 @@
     border-radius: 1rem;
   }
 
-  .closeAlertMsg{
-
-  }
-
   .alertMsg-title {
     font-family: prompt;
-    font-size: 25px;
+    font-size: 22px;
     font-weight: 600;
     color: var(--onix);
   }
@@ -307,14 +303,14 @@
     border-color: var(--eerie-black);
     border: solid 1px;
     font-family: unna;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 200;
     color: var(--onix);
   }
 
   .alertMsg-text {
     font-family: rambla;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 400;
     color: var(--eerie-black);
   }
