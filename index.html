@@ -11,7 +11,8 @@
     <!-- CSS -->
     <link rel="stylesheet" href="./Assets/styles.css" />
     <link rel="stylesheet" href="./Assets/mediaqueries.css" />
-    <link rel="stylesheet" href="./Assets/animaciones.css" />
+    <link rel="stylesheet" href="./Assets/animaciones.css" /> 
+
         
     <!-- Fontawesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" 
@@ -93,6 +94,16 @@
     </header>
 
     <main class="main">
+        <!-- Box para mensages de alerta -->
+        <div class="alertMsg-box hidden">
+            <h3 class="alertMsg-title"></h3>
+            <p class="alertMsg-text"></p>
+            <div class="alertMsg-btnBox">
+                <button class="btn alertMsg-btn btn1"></button>
+                <button class="btn alertMsg-btn btn2"></button>
+            </div>
+        </div>
+
         <!-- Sticky user -->
         <div class="userSticky hidden">
             <h3 class="activeUser">Nombre de usuario</h3>

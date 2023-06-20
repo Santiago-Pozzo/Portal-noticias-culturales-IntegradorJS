@@ -150,24 +150,53 @@
   }
 
 /* ------------------------- Main ---------------------------*/
-.main {
-  margin-top: 50px;
-}
-  /* Sticky usuario */
-/* Sticky usuario */
-.userSticky {
-  top: 85px;
-  padding: 3px 12px;
-  gap: 8px;
-}
 
-.activeUser{
-  font-size: 16px;
-}
 
-.logOut-icon {
-  font-size: 17px;
-}
+  .main {
+    margin-top: 50px;
+  }
+
+  /* Mensage de alerta */
+  .alertMsg-box {
+    margin-top: 20Vh;
+    left: 20%;
+    height: 40vh;
+    width: 60%;
+    gap: 30px;
+    border-radius: 1rem;
+  }
+
+  .alertMsg-title {
+    font-size: 32px;
+  }
+  
+  .alertMsg-btnBox {
+    gap: 12px;
+  }
+
+  .alertMsg-text {
+    font-size: 25px;
+  }
+
+  .alertMsg-btn {
+    font-size: 18px;
+  }
+
+   /* Sticky usuario */
+  .userSticky {
+    top: 85px;
+    padding: 3px 12px;
+    gap: 8px;
+  }
+
+  .activeUser{
+    font-size: 16px;
+  }
+
+  .logOut-icon {
+    font-size: 17px;
+  }
+
   /* Hero */
    .hero-info {
     margin-top: 25px;

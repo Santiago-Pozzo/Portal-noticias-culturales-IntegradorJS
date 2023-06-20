@@ -14,19 +14,126 @@ const cleanFavBtn = document.querySelector(".cleanFavorites-btn");
 const msgModal = document.querySelector(".add-modal");
 const cleanFavoritesBtn = document.querySelector(".cleanFavorites-btn");
 const userSticky = document.querySelector(".userSticky");
+const alertMsgBox = document.querySelector(".alertMsg-box");
 
 //Traer usuario activo del session storage
 let activeUser = JSON.parse(sessionStorage.getItem("activeUser")) || {};
 
+const isActiveUser = () => {
+    return sessionStorage.getItem("activeUser") !== null;
+};
+
 //Traer favoritos del local storage
-let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+let favorites = [];
+if (isActiveUser()) {
+    favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+};
+
 
 //Guardar favoritos en el local storage
 const saveFavoritesOnLocalStorage = () => {
     localStorage.setItem("favorites", JSON.stringify(favorites));
 };
 
+//Funciones Mensaje de alerta-------------------------------------------------
+let userChoice;
 
+        const userChoiceListener = ({target}) => {
+            if (!target.classList.contains("btn")) {
+                userChoice = 0;
+            };
+            if(target.classList.contains("btn1")) {
+                userChoice = 1;
+            };
+            if(target.classList.contains("btn2")) {
+                userChoice = 2;
+            };
+        ;}
+
+    const waitForUserChoice = () => new Promise(resolve =>  {
+                alertMsgBox.addEventListener("click", event => {
+                    userChoiceListener(event);
+                    resolve();  // Resuelve la promesa una vez que se ejecuta userChoiceListener
+                });
+        });
+
+
+    const renderAlertMsg = (title, text, btn1, btn2) => {
+        console.log(title);
+        alertMsgBox.classList.remove("hidden");
+        alertMsgBox.innerHTML = `
+            <h3 class="alertMsg-title">${title}</h3>
+            <p class="alertMsg-text">${text}</p>
+            <div class="alertMsg-btnBox">
+                <button class="btn alertMsg-btn btn1">${btn1}</button>
+                <button class="btn alertMsg-btn btn2">${btn2}</button>
+            </div>
+        `
+        return;
+    };
+
+    const alertBtnActions = (alert, choice) => {
+        if (choice === 2) {
+        alertMsgBox.classList.add("hidden");
+        userChoice = 0;
+        return;
+        };
+   
+        if (choice === 1) {
+            if (alert === 1) {
+                window.location.href = "./Pages/login.html";
+                return;
+            };
+    
+            if (alert === 2) {
+                console.log("aca borras todos los favoritos");
+                favorites = [];
+                changeToEmptyAllStars(); 
+                updateFavoritesState();
+                alertMsgBox.classList.add("hidden");
+                return;
+            };
+
+            if (alert === 3) {
+                userSticky.classList.add("hidden");
+                activeUser = {};
+                sessionStorage.removeItem("activeUser");
+                alertMsgBox.classList.add("hidden");
+                window.location.href = "./index.html";
+                return;
+            };
+        };
+
+    };
+
+const handleAlertMsg = (alertNumber) => {
+    console.log(alertNumber+"numero de alerta");
+    if (alertNumber === 1) {
+        console.log("esta es la opcion 1");
+        renderAlertMsg ("Agregar a favoritos",
+                        "Tenés que iniciar sesión para poder agregar artículos a tus favoritos", 
+                        "Ingresar",
+                        "Cancelar");                      
+    };
+
+    if (alertNumber === 2) {
+        console.log("esta es la opcion 2");
+        renderAlertMsg ("Eliminar todos tus favoritos",
+                        "Estás a punto de borrar todos tus artículos favoritos. ¿Deseas continuar?", 
+                        "Eliminar todos",
+                        "Cancelar");
+    };
+
+    if (alertNumber === 3) {
+        console.log("esta es la opcion 3");
+        renderAlertMsg ("Cerrar sesión",
+                        "Estás a punto de cerrar tu sesión ¿Deseas continuar?", 
+                        "Cerrar sesión",
+                        "Cancelar");       
+    };
+
+    waitForUserChoice().then(() => alertBtnActions(alertNumber, userChoice)) 
+};    
 
 //Renderizar noticias---------------------------------------------
         //Checkeo si un articulo está en favoritos
@@ -318,23 +425,33 @@ const setFavArt = ({target}) => {
     if (!clickOnFavBtn(target)) {
         return;
     };
-    //Aseguro que el target sea el boton y no el icono
-    if (target.classList.contains("fa-star")) {
-        target = target.parentNode;
+
+    if (isActiveUser()) {
+        //Aseguro que el target sea el boton y no el icono
+        if (target.classList.contains("fa-star")) {
+            target = target.parentNode;
+        };
+
+        icon = target.firstElementChild;
+        const article = createArtData(target.dataset);
+
+        if (isFavoriteArt(article.id) === false) {
+            createFavoriteArt (article);
+            showMsgModal("Se agregó a tus artículos favoritos");
+            changeToActiveStar(icon);
+        }  else {
+            removeFavoriteArt (article);
+            showMsgModal("Se quitó de tus artículos favoritos");
+            changeToEmptyStar(icon);
+        };
     };
 
-    icon = target.firstElementChild;
-    const article = createArtData(target.dataset);
-
-    if (isFavoriteArt(article.id) === false) {
-        createFavoriteArt (article);
-        showMsgModal("Se agregó a tus artículos favoritos");
-        changeToActiveStar(icon);
-    }  else {
-        removeFavoriteArt (article);
-        showMsgModal("Se quitó de tus artículos favoritos");
-        changeToEmptyStar(icon);
+    if (!isActiveUser()) {
+        handleAlertMsg (1);
+        return; 
     };
+
+   
 };
 
 //Quitar articulo desde el menu favoritos-----------------------------
@@ -366,10 +483,8 @@ const removeFavoriteArtFromList = ({target}) => {
     };
 
 const cleanFavorites = ({target}) => {
-    if (isCleanFavoritesBtn(target) && window.confirm("¿Quieres borrar tus artículos favoritos?")){
-        favorites = [];
-        changeToEmptyAllStars(); 
-        updateFavoritesState();
+    if (isCleanFavoritesBtn(target)){
+        handleAlertMsg(2);
     };
 };
 
@@ -388,10 +503,6 @@ const openArtID = ({target}) => {
 
 //Funciones del sticky con nombre de usuario activo-------------------------
 //Renderizar sticky
-    const isActiveUser = () => {
-        return sessionStorage.getItem("activeUser") !== null;
-    };
-
     const userStickyTemplate = () => {
         userSticky.classList.remove("hidden");
         const userName = document.querySelector(".activeUser");
@@ -400,11 +511,9 @@ const openArtID = ({target}) => {
 
 const renderUserSticky = () => {
     if (isActiveUser()) {
-        console.log("hay un usuario activo vieja");
         userStickyTemplate();
         return;
     };
-    console.log("no hay usuario activo vieja");
 };
 
 //Cerrar sesion
@@ -413,19 +522,18 @@ const renderUserSticky = () => {
     };
 
 const logOut = ({target}) => {
-    if (clickOnLogOutBtn(target) && window.confirm("¿Quieres cerrar sesión?")) {
-        userSticky.classList.add("hidden");
-        activeUser = {};
-        sessionStorage.removeItem("activeUser");
+    if (clickOnLogOutBtn(target)) {
+        handleAlertMsg(3);
     };
 };
 
 //Esconder al abrir un menu
-const hideOnOpenMenu = ({target}) => {
-    if (target.classList.contains("label")) {
+const hideOnOpenMenu = () => {
+    if (!overlay.classList.contains("hidden")) {
         userSticky.classList.add("hidden");
     } 
 };
+
 
 //----------------------------------Init--------------------------------------------
 const init  = () => {
@@ -449,3 +557,5 @@ const init  = () => {
 
 init ();
 
+//renderAlertMsg("hola", "que hace", "btn1", "btn2");
+//alertMsgBox.addEventListener("click", userChoiceListener);
