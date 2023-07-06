@@ -1,7 +1,7 @@
 import { createArtData, removeFavoriteArt } from "./news-functios.js";
 import { handleAlertMsg } from "./alert-msg-functions.js"; 
 import { navMenu } from "./nav-menu-functions.js";
-import { overlay, getFavorites, updateFavoritesState } from "./common-functions.js";
+import { overlay, getFavorites, updateFavoritesState, saveOpenArtIDOnLocalStorage } from "./common-functions.js";
 
 const headerFavoritesBtn = document. querySelector(".favorites-label");
 const headerFavIcon = document.querySelector(".navbar-favoriteIcon");
@@ -127,10 +127,21 @@ const cleanFavorites = ({target}) => {
     };
 };
 
+//Capturar ID de articulo abierto por el usuario
+const getArtID = ({target}) => {
+    if (target.classList.contains("favoriteArt-title")) {
+        let id = target.parentNode.parentNode.parentNode.id;
+        console.log(id);
+        saveOpenArtIDOnLocalStorage(id);
+    };
+};
+
+
 export const favMenuFunctionsInit = () => {
     headerFavoritesBtn.addEventListener("click", toggleFavMenu);
     document.addEventListener("DOMContentLoaded", renderFavorites);
     favoritesContainer.addEventListener("click", removeFavoriteArtFromList);
     favoritesContainer.parentNode.addEventListener("click", cleanFavorites);
+    favoritesContainer.addEventListener("click", getArtID);
 };
 

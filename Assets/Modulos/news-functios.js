@@ -1,6 +1,6 @@
 import { appState, artsData } from "../data.js";
 import { changeToActiveStar, changeToEmptyStar } from "./fav-menu-functions.js";
-import { updateFavoritesState, getFavorites, isActiveUser, openArtID } from "./common-functions.js";
+import { updateFavoritesState, getFavorites, isActiveUser, openArtID, saveOpenArtIDOnLocalStorage } from "./common-functions.js";
 import { handleAlertMsg } from "./alert-msg-functions.js"; 
 
 const newsSection = document.querySelector(".news-section");
@@ -207,10 +207,18 @@ const setFavArt = ({target}) => {
     };
 };
 
+//Capturar ID de articulo abierto por el usuario
+const getArtID = ({target}) => {
+    if (target.classList.contains("art-title")) {
+        let id = target.parentNode.parentNode.parentNode.firstElementChild.lastElementChild.dataset.id;
+        saveOpenArtIDOnLocalStorage(id);
+    };
+};
+
 export const newsSectionInit = () => {
     document.addEventListener("DOMContentLoaded", renderNews(appState.articles[appState.currentIndex]));
     showMoreBtn.addEventListener("click", showMorreArts);
     categoriesBox.addEventListener("click", aplyFilter);
     newsSection.addEventListener("click", setFavArt);
-    newsSection.addEventListener("click", openArtID);
+    newsSection.addEventListener("click", getArtID);
 };
