@@ -1,6 +1,6 @@
 import { appState, artsData } from "../data.js";
 import { changeToActiveStar, changeToEmptyStar } from "./fav-menu-functions.js";
-import { updateFavoritesState, getFavorites, isActiveUser } from "./common-functions.js";
+import { updateFavoritesState, getFavorites, isActiveUser, openArtID } from "./common-functions.js";
 import { handleAlertMsg } from "./alert-msg-functions.js"; 
 
 const newsSection = document.querySelector(".news-section");
@@ -205,19 +205,6 @@ const setFavArt = ({target}) => {
         handleAlertMsg (1);
         return; 
     };
-};
-
-//Abrir noticia en nueva pestaña---------------------------------------
-const getArtID = (target) => {
-    return target.parentNode.parentNode.parentNode.firstElementChild.lastElementChild.dataset.id;
-};
-
-const saveOpenArtIDOnLocalStorage = (data) => {
-    localStorage.setItem("openArtID", JSON.stringify(data));
-};
-
-const openArtID = ({target}) => {
-saveOpenArtIDOnLocalStorage(getArtID(target));
 };
 
 export const newsSectionInit = () => {

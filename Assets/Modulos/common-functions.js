@@ -44,3 +44,15 @@ export const updateFavoritesState = (favorites) => {
     };
 };
 
+//Abrir noticia en nueva pestaña---------------------------------------
+const getArtID = (target) => {
+    return target.parentNode.parentNode.parentNode.firstElementChild.lastElementChild.dataset.id;
+};
+
+const saveOpenArtIDOnLocalStorage = (data) => {
+    localStorage.setItem("openArtID", JSON.stringify(data));
+};
+
+export const openArtID = ({target}) => {
+saveOpenArtIDOnLocalStorage(getArtID(target));
+};
