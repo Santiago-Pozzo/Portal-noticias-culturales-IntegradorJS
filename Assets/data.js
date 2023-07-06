@@ -1,4 +1,4 @@
-const artsData = [
+export const artsData = [
     {
         id: 1,
         title: "El Festival Internacional de Danza de Córdoba pasó por la Legislatura",
@@ -322,7 +322,7 @@ const divideArtsInParts = (size) => {
     return artList;
 };
 
-const appState = {
+export const appState = {
     articles: divideArtsInParts(5),
     currentIndex: 0,
     artsLimit: divideArtsInParts(5).length,

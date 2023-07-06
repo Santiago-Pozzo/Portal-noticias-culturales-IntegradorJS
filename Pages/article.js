@@ -1,3 +1,5 @@
+import { artsData } from "../Assets/data.js";
+
 const articleSection = document.querySelector(".articleSection");
 
 //Traer favoritos del local storage
@@ -6,8 +8,19 @@ let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 //Traer ID del articulo del local storage
 let openArtID = JSON.parse(localStorage.getItem("openArtID"));
 
+//-----------------Renderizar noticia--------------------------
+
     const getArticleData = (id) => {
-        return {id, title, crest, autor, date, text, img, category, favorite} = artsData[id-1];
+        let title = artsData[id-1].title;
+        let crest = artsData[id-1].crest;
+        let autor = artsData[id-1].autor;
+        let date = artsData[id-1].date;
+        let text = artsData[id-1].text;
+        let img = "." + artsData[id-1].img;
+        let category = artsData[id-1].category;
+        let favorite = artsData[id-1].favorite;
+
+        return {id, title, crest, autor, date, text, img, category, favorite};
     }
 
             //Checkeo si un articulo está en favoritos
@@ -17,20 +30,19 @@ let openArtID = JSON.parse(localStorage.getItem("openArtID"));
                   });
             }
 
+            //Le doy la clase al icono de favorito
             const favoriteClassName = (isFav) => {
                 if (isFav) {
                     return "favorite-active";
                 } else {
                     return "favorite-empty";
                 }
-            }    
-const renderOpenArticle = () => {
-    getArticleData(openArtID);
-    let className = favoriteClassName(isFavoriteArt(openArtID));
-    //Corrijo ruta del archivo con la img
-    img = "."+img;
-    
+            }; 
 
+const renderOpenArticle = () => {
+    let {title, crest, autor, date, text, img, category} = getArticleData(openArtID);
+    let className = favoriteClassName(isFavoriteArt(openArtID));
+   
     articleSection.innerHTML = `
         <div class="artHead artSectionChild">
             <div class="art-info artPage-info">
@@ -53,6 +65,6 @@ const renderOpenArticle = () => {
 
         <p class="artPage-text artSectionChild"> ${text}</p>
     `
-}
+};
 
 document.addEventListener("DOMContentLoaded", renderOpenArticle());
